@@ -21,6 +21,8 @@ Welcome! This is the documentation for ``cogsworth`` schools, where you can lear
     :hidden:
 
     pages/background/start
+    pages/background/reference
+    pages/background/output
 
 .. toctree::
     :maxdepth: 4
