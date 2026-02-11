@@ -3,7 +3,7 @@ Home
 
 Welcome! This is the documentation for ``cogsworth`` schools, where you can learn how to use ``cogsworth`` to perform self-consistent population synthesis and galactic dynamics simulations.
 
-.. grid:: 2
+.. grid:: 1 2 2 2
 
     .. grid-item::
 
