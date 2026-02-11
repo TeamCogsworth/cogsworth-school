@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AstroNuc 2026 &#8212; cogsworth school</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/signika.css?v=314eba6c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=5967219c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/labs/astronuc';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Getting started" href="../background/start.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cogsworth-logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/cogsworth-logo-darkmode.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">cogsworth school</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/start.html">Getting started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AstroNuc 2026</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pages/labs/astronuc.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AstroNuc 2026</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-one-basic-population-growth">Part one: Basic Population Growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-two-timing-growth">Part two: Timing growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-three-the-rabbits-are-mutating">Part three: The rabbits are mutating!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-four-an-island-upstate">Part four: An island upstate</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="astronuc-2026">
+<h1>AstroNuc 2026<a class="headerlink" href="#astronuc-2026" title="Link to this heading">#</a></h1>
+<iframe src="../../_static/presentations/astronuc/main.html" width="100%" height="500px"></iframe><p class="sd-text-center"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm reference external" href="../../_static/presentations/astronuc/main.html"><span>View full-screen presentation</span></a></p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Picture a remote island, filled with luscious green grass and lettuce and perfect weather. A few rabbits arrive on the island and decide to make it their new home. As you know, there’s nothing a rabbit loves more than to multiply! Your task is to write a program that simulates the growth of the rabbit population on this island over a number of months.</p>
+<p>You will add code to the <code class="docutils literal notranslate"><span class="pre">problems/populations.py</span></code> file to model the rabbit population growth.</p>
+<p>You can run this program from the command line, passing in parameters for the initial population size, fertility rate, and number of months to simulate. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>problems/populations.py<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span><span class="w"> </span>-f<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+<p>I’ve set up the command line argument parsing for you; your job is to implement the population growth logic. Right now it’ll always just return 0 (oh no, where did the rabbits go?!).</p>
+</section>
+<section id="part-one-basic-population-growth">
+<h2>Part one: Basic Population Growth<a class="headerlink" href="#part-one-basic-population-growth" title="Link to this heading">#</a></h2>
+<p>Start by simulating the rabbit population growth without any constraints. You’ll be modifying the <code class="docutils literal notranslate"><span class="pre">growth</span></code> function in <code class="docutils literal notranslate"><span class="pre">problems/populations.py</span></code>. The function takes three parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_start</span></code>: The initial number of rabbits on the island</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fertility</span></code>: The average number of offspring each <em>pair</em> of rabbits produce per month</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">months</span></code>: The number of months to simulate</p></li>
+</ul>
+<p>These are very romantic rabbits that mate for life! That means that only pairs of rabbits can produce offspring. For example, if there are 10 rabbits on the island, there are 5 pairs, and if the fertility rate is 4, then those 5 pairs will produce a total of 20 new rabbits in one month. But if there were 11 rabbits, there would still only be 5 pairs (the extra rabbit is single 😭), and they would still only produce 20 new rabbits in one month.</p>
+<p>These rabbits are magical and <strong>immortal</strong> (because who wants to think about death in a rabbit population problem?). So once a rabbit is born, it will live forever and continue to reproduce according to the fertility rate.</p>
+<p>Your task is to implement the population growth logic in the <code class="docutils literal notranslate"><span class="pre">growth</span></code> function. The function should return the total rabbit population after the specified number of months.</p>
+<p>Here are some test cases your function should pass:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the syntax for running your function looks like</span>
+<span class="c1"># python problems/populations.py -p 1 -s &lt;starting_population&gt; -f &lt;fertility_rate&gt; -m &lt;months&gt;</span>
+<span class="c1"># the parameter -p 1 indicates that we want to test part one of the problem</span>
+
+<span class="c1"># expected output: 3</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="mi">1</span>
+
+<span class="c1"># expected output: 1234</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1</span> <span class="o">-</span><span class="n">s</span> <span class="mi">10</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="mi">12</span>
+
+<span class="c1"># expected output: 67108865</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1</span> <span class="o">-</span><span class="n">s</span> <span class="mi">5</span> <span class="o">-</span><span class="n">f</span> <span class="mi">2</span> <span class="o">-</span><span class="n">m</span> <span class="mi">24</span>
+
+<span class="c1"># expected output: 21767823360</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1</span> <span class="o">-</span><span class="n">s</span> <span class="mi">10</span> <span class="o">-</span><span class="n">f</span> <span class="mi">10</span> <span class="o">-</span><span class="n">m</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</section>
+<section id="part-two-timing-growth">
+<h2>Part two: Timing growth<a class="headerlink" href="#part-two-timing-growth" title="Link to this heading">#</a></h2>
+<p>Now let’s instead consider how long it takes a rabbit population to reach a certain size. The <code class="docutils literal notranslate"><span class="pre">time_to_target</span></code> function in <code class="docutils literal notranslate"><span class="pre">problems/populations.py</span></code> takes three parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_start</span></code>: The initial number of rabbits on the island</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fertility</span></code>: The average number of offspring each <em>pair</em> of rabbits produce per month</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>: The target population size</p></li>
+</ul>
+<p>Your task is to implement the logic in the <code class="docutils literal notranslate"><span class="pre">time_to_target</span></code> function. The function should return the number of months it takes for the rabbit population to reach, or exceed, the target size.</p>
+<p>Here are some test cases your function should pass:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the syntax for running your function looks like</span>
+<span class="c1"># python problems/populations.py -p 2 -s &lt;starting_population&gt; -f &lt;fertility_rate&gt; -t &lt;target_population&gt;</span>
+<span class="c1"># the parameter -p 2 indicates that we want to test part two of the problem</span>
+
+<span class="c1"># expected output: 1</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">t</span> <span class="mi">3</span>
+
+<span class="c1"># expected output: 12</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2</span> <span class="o">-</span><span class="n">s</span> <span class="mi">10</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">t</span> <span class="mi">1234</span>
+
+<span class="c1"># expected output: 12</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2</span> <span class="o">-</span><span class="n">s</span> <span class="mi">50</span> <span class="o">-</span><span class="n">f</span> <span class="mi">5</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100000000</span>
+</pre></div>
+</div>
+</section>
+<section id="part-three-the-rabbits-are-mutating">
+<h2>Part three: The rabbits are mutating!<a class="headerlink" href="#part-three-the-rabbits-are-mutating" title="Link to this heading">#</a></h2>
+<p>Our magical rabbits have quite an amazing property: after there are at least 10 times the initial population on the island, they all suddenly mutate and change their fertility rate! From that point on, each <em>pair</em> of rabbits produces the offspring at a rate that’s modified by a given mutation factor.</p>
+<p>Change the <code class="docutils literal notranslate"><span class="pre">time_with_mutation</span></code> function in <code class="docutils literal notranslate"><span class="pre">problems/populations.py</span></code> to account for this mutation. The function takes the same parameters as <code class="docutils literal notranslate"><span class="pre">time_to_target</span></code>, with one extra parameter:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_start</span></code>: The initial number of rabbits on the island</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fertility</span></code>: The average number of offspring each <em>pair</em> of rabbits produce per month</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>: The target population size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mutation_factor</span></code>: The factor by which the fertility rate changes once the population reaches 10 times the initial size</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Hint: The <code class="docutils literal notranslate"><span class="pre">floor()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module can be useful for rounding down to the nearest whole number. I’ve already imported this for you, so you can use it directly in your code!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>       <span class="c1"># Output: 1</span>
+</pre></div>
+</div>
+</aside>
+<p>Note that the mutation factor can be a decimal (for example, a mutation factor of 1.5 means the fertility rate increases by 50%). Since we can’t create a fraction of a rabbit, round down the new fertility rate to the nearest whole number. It could also be less than 1, meaning the rabbits become less fertile after the mutation.</p>
+<div class="admonition-watch-out-for-zero-fertility admonition">
+<p class="admonition-title">Watch out for zero fertility!</p>
+<p>With certain mutation factors, it’s possible for the fertility rate to drop to zero after mutation (for example, a fertility rate of 1 with a mutation factor of 0.5). In this case, the rabbit population will stop growing entirely once the mutation occurs. Make sure your code can handle this scenario correctly!</p>
+<p>The number of months is now infinite if the population cannot reach the target size due to zero fertility. In this case, your function should return -1 to indicate that the target population is unreachable.</p>
+</div>
+<p>Your task is to implement the logic in the <code class="docutils literal notranslate"><span class="pre">time_with_mutation</span></code> function. The function should return the number of months it takes for the rabbit population to reach, or exceed, the target size, accounting for the mutation.</p>
+<p>Here are some test cases your function should pass:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the syntax for running your function looks like</span>
+<span class="c1"># python problems/populations.py -p 3 -s &lt;starting_population&gt; -f &lt;fertility_rate&gt; -t &lt;target_population&gt; -mf &lt;mutation_factor&gt;</span>
+<span class="c1"># the parameter -p 3 indicates that we want to test part three of the problem</span>
+
+<span class="c1"># expected output: 1</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">t</span> <span class="mi">3</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">2</span>
+
+<span class="c1"># expected output: -1</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3</span> <span class="o">-</span><span class="n">s</span> <span class="mi">10</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">t</span> <span class="mi">1234</span> <span class="o">-</span><span class="n">mf</span> <span class="mf">0.1</span>
+
+<span class="c1"># expected output: 9</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3</span> <span class="o">-</span><span class="n">s</span> <span class="mi">50</span> <span class="o">-</span><span class="n">f</span> <span class="mi">5</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100000000</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">2</span>
+
+<span class="c1"># expected output: 12</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3</span> <span class="o">-</span><span class="n">s</span> <span class="mi">50</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100000000</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">20</span>
+
+<span class="c1"># expected output: 11</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">3</span> <span class="o">-</span><span class="n">s</span> <span class="mi">50</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100000000</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</section>
+<section id="part-four-an-island-upstate">
+<h2>Part four: An island upstate<a class="headerlink" href="#part-four-an-island-upstate" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_static/rabbits_ferry.png"><img alt="_static/rabbits_ferry.png" src="_static/rabbits_ferry.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">They’re off to an island upstate!</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The rabbits quickly realise that there’s only some much grass and lettuce on the island, and that the population can’t grow indefinitely. The island has a maximum capacity, meaning that once the population reaches this size, the fertility rate drops to only 1 offspring per pair of rabbits per month (they’re too busy competing for resources to reproduce effectively!). This means that the number of rabbits can exceed the island’s capacity, but the growth rate slows down significantly once that point is reached.</p>
+<p>Given the scarcity of resources, you might imagine that some of the rabbits may die off if the population exceeds the island’s carrying capacity. However, fear not, these magical rabbits are resourceful and have devised a clever plan to take a ferry to an island upstate! Each month, a ferry arrives that can take a certain number of rabbits away from the crowded island, reducing the population.</p>
+<p>In the final function, <code class="docutils literal notranslate"><span class="pre">growth_with_capacity</span></code>, you’ll implement this more complex population model. The function takes the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_start</span></code>: The initial number of rabbits on the island</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fertility</span></code>: The average number of offspring each <em>pair</em> of rabbits produce per month</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">months</span></code>: The number of months to simulate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mutation_factor</span></code>: The factor by which the fertility rate changes once the population reaches 10 times the initial size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">island_capacity</span></code>: The maximum population capacity that the island can easily sustain</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_ferry</span></code>: The number of rabbits that can fit on the ferry each month</p></li>
+</ul>
+<p>Your task is to implement the logic in the <code class="docutils literal notranslate"><span class="pre">growth_with_capacity</span></code> function. The rules are now as follows:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Each month, the rabbit population grows according to the fertility rate, which may be affected by mutation and island capacity.</dt><dd><ul>
+<li><p>Once the population reaches 10 times the initial size, the fertility rate mutates as described in part three.</p></li>
+<li><p>If the population exceeds the island capacity, the fertility rate drops to 1 offspring per pair of rabbits per month.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Once the population reaches the island capacity for the first time, the rabbits build the ferry. Each month after and including that month, the ferry arrives and takes away up to <code class="docutils literal notranslate"><span class="pre">n_ferry</span></code> rabbits from the population.</p></li>
+<li><p>The rabbits complete all of their breeding before the ferry arrives each month.</p></li>
+<li><p>If the population ever reaches zero during the simulation, your function should immediately return 0, as the rabbits have all left the island.</p></li>
+</ul>
+<p>Here are some test cases your function should pass:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the syntax for running your function looks like</span>
+<span class="c1"># python problems/populations.py -p 4 -s &lt;starting_population&gt; -f &lt;fertility_rate&gt; -m &lt;months&gt; -mf &lt;mutation_factor&gt; -c &lt;island_capacity&gt; -d &lt;n_ferry&gt;</span>
+<span class="c1"># the parameter -p 4 indicates that we want to test part four of the problem</span>
+
+<span class="c1"># expected output: 13</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="mi">5</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">2</span> <span class="o">-</span><span class="n">c</span> <span class="mi">10</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3</span>
+
+<span class="c1"># expected output: 0</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="mi">12</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">2</span> <span class="o">-</span><span class="n">c</span> <span class="mi">10</span> <span class="o">-</span><span class="n">d</span> <span class="mi">300</span>
+
+<span class="c1"># expected output: 32452</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4</span> <span class="o">-</span><span class="n">s</span> <span class="mi">20</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="mi">14</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">20</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1000</span> <span class="o">-</span><span class="n">d</span> <span class="mi">300</span>
+
+<span class="c1"># expected output: 0</span>
+<span class="n">python</span> <span class="n">problems</span><span class="o">/</span><span class="n">populations</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4</span> <span class="o">-</span><span class="n">s</span> <span class="mi">20</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="mi">14</span> <span class="o">-</span><span class="n">mf</span> <span class="mi">20</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1000</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3000</span>
+</pre></div>
+</div>
+<p>Good luck, and may the rabbits multiply in your favour! 🐇🐇🐇</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../background/start.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting started</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-one-basic-population-growth">Part one: Basic Population Growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-two-timing-growth">Part two: Timing growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-three-the-rabbits-are-mutating">Part three: The rabbits are mutating!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-four-an-island-upstate">Part four: An island upstate</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Wagg
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tom Wagg.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

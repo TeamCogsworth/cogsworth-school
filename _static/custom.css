@@ -1,0 +1,13 @@
+:root {
+    --pst-color-primary: #905cc4!important;
+    --pst-color-secondary: #53099e!important;
+    --sd-color-primary-highlight: #53099e!important;
+    --sd-color-primary-border: #53099e!important;
+    --pst-font-family-base: 'Signika', sans-serif!important;
+    --pst-font-family-base-system: 'Signika', sans-serif!important;
+    --pst-font-family-heading: 'Signika', sans-serif!important;
+}
+
+.navbar-brand img {
+    max-width: min(100%, 150px);
+}

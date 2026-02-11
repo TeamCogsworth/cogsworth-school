@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Variables &#8212; cogsworth school</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/signika.css?v=314eba6c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=5967219c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/background/variables';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cogsworth-logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/cogsworth-logo-darkmode.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">cogsworth school</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/astronuc.html">AstroNuc 2026</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/pages/background/variables.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variables</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basics">The Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-a-variable">Setting a variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-variable">Using a variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-a-variable">Changing a variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-data-types">Variable data types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-on-variables">Operations on variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numbers">Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice">Practice</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h1>
+<p>In programming, a variable is a way to store information that can be used and changed later in your code. Think of it like a labelled box where you can put something inside, and then you can take it out or change what’s inside whenever you want.</p>
+<img src="../../_static/boxes.jpg" style="display: block; margin-left: auto; margin-right: auto; width: min(100%, 500px);"/><section id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Link to this heading">#</a></h2>
+<section id="setting-a-variable">
+<h3>Setting a variable<a class="headerlink" href="#setting-a-variable" title="Link to this heading">#</a></h3>
+<p>In Python, this is (unnervingly) easy to do. You just pick a name for your variable, use the equals sign (<cite>=</cite>) to assign a value to it, and that’s it! Here’s an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is how you create a variable in Python</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
+</pre></div>
+</div>
+<p>Notice that I included a comment (the line that starts with <cite>#</cite>). Comments are notes in your code that help explain what you’re doing, and they don’t affect how the code runs. You can add them anywhere in your code to make it clearer.</p>
+<p>Within that code block we’ve created a variable called <code class="docutils literal notranslate"><span class="pre">name</span></code> and assigned it the value <code class="docutils literal notranslate"><span class="pre">&quot;Emily&quot;</span></code>. Now, whenever you use <code class="docutils literal notranslate"><span class="pre">name</span></code> in your code, Python will understand that you’re referring to the value <code class="docutils literal notranslate"><span class="pre">&quot;Emily&quot;</span></code>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>When naming your variables, there are a few rules to keep in mind:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Variable names can only contain letters, numbers, and underscores (<cite>_</cite>). They cannot start with a number.</p></li>
+<li><p>Variable names are case-sensitive. This means that <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, and <code class="docutils literal notranslate"><span class="pre">NAME</span></code> are all different variables.</p></li>
+<li><p>Avoid using Python’s reserved words (like <cite>if</cite>, <cite>for</cite>, <cite>while</cite>, etc.) as variable names (we’ll learn about these later!).</p></li>
+</ul>
+</div></blockquote>
+</aside>
+</section>
+<section id="using-a-variable">
+<h3>Using a variable<a class="headerlink" href="#using-a-variable" title="Link to this heading">#</a></h3>
+<p>You can use variables in your code to do all sorts of things. For example, you can print the value of a variable to the screen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, we’ve “hardcoded” the value of the variable <code class="docutils literal notranslate"><span class="pre">name</span></code> to be <code class="docutils literal notranslate"><span class="pre">&quot;Emily&quot;</span></code>. When you run this code, it will <em>always</em> print <code class="docutils literal notranslate"><span class="pre">Emily</span></code>.</p>
+</section>
+<section id="changing-a-variable">
+<h3>Changing a variable<a class="headerlink" href="#changing-a-variable" title="Link to this heading">#</a></h3>
+<p>You can also change the value of a variable at any time. Just assign a new value to it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, we first set <code class="docutils literal notranslate"><span class="pre">name</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Emily&quot;</span></code>, printed it, then changed <code class="docutils literal notranslate"><span class="pre">name</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Alice&quot;</span></code>, and printed it again.</p>
+</section>
+</section>
+<section id="variable-data-types">
+<h2>Variable data types<a class="headerlink" href="#variable-data-types" title="Link to this heading">#</a></h2>
+<p>Variables can hold different types of data. So far, we’ve only dealt with strings (text), but variables can also hold numbers, lists, and more.</p>
+<p>In other languages (like C) you have to specify what type of data a variable will hold when you create it, but in Python, the type is determined automatically based on the value you assign to it. Here are some common data types you might use:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Strings</p></td>
+<td><p>Text data, like names or sentences. In Python, strings are enclosed in quotes (either single <cite>‘</cite> or double <cite>“</cite>).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Emily&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Integers</p></td>
+<td><p>Whole numbers, like 1, 2, 3, etc.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">28</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Floats</p></td>
+<td><p>Decimal numbers, like 3.14 or 2.0.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuteness</span> <span class="pre">=</span> <span class="pre">100.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Booleans</p></td>
+<td><p>True or False values, often used for conditions.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_beautiful</span> <span class="pre">=</span> <span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Lists</p></td>
+<td><p>A collection of items, which can be of different types.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ice_cream_flavors</span> <span class="pre">=</span> <span class="pre">[&quot;vanilla&quot;,</span> <span class="pre">&quot;chocolate&quot;,</span> <span class="pre">&quot;strawberry&quot;]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dictionaries</p></td>
+<td><p>A collection of key-value pairs.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">person</span> <span class="pre">=</span> <span class="pre">{&quot;name&quot;:</span> <span class="pre">&quot;Emily&quot;,</span> <span class="pre">&quot;age&quot;:</span> <span class="pre">28}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can check the type of a variable using the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">cuteness</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">is_beautiful</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cuteness</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">is_beautiful</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You can even change the type of a variable by assigning it a new value of a different type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;I am a string&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">variable</span><span class="p">))</span>
+
+<span class="n">variable</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">variable</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This is called “dynamic typing,” and it’s one of the features that makes Python flexible and easy to use. At the same time, it means you need to be careful about how you use variables, since their type can change. This can be bad for a few reasons:</p>
+<ul class="simple">
+<li><p>It can lead to bugs if you accidentally change a variable’s type and then try to use it in a way that doesn’t make sense for that type.</p></li>
+<li><p>It can slow down your code, since Python has to figure out the type of each variable at runtime.</p></li>
+</ul>
+<p>…but it’s a trade-off that many programmers find worth it for the ease of use and flexibility that dynamic typing provides.</p>
+</section>
+<section id="operations-on-variables">
+<h2>Operations on variables<a class="headerlink" href="#operations-on-variables" title="Link to this heading">#</a></h2>
+<p>You can perform various operations on variables depending on their data type. Let’s talk through some of the common operations you might want to do with different types of variables.</p>
+<section id="strings">
+<h3>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h3>
+<p>You can concatenate (join) strings using the <cite>+</cite> operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;Emily&quot;</span>
+<span class="n">last_name</span> <span class="o">=</span> <span class="s2">&quot;O&#39;Connor&quot;</span>
+<span class="n">full_name</span> <span class="o">=</span> <span class="n">first_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">last_name</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also repeat strings using the <cite>*</cite> operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">laugh</span> <span class="o">=</span> <span class="s2">&quot;ha&quot;</span>
+<span class="n">laughter</span> <span class="o">=</span> <span class="n">laugh</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">laughter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can convert a string to a number (if it represents a valid number) using the <cite>int()</cite> or <cite>float()</cite> functions:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>If you try to convert a string that doesn’t represent a valid number (like “hello”) to an integer or float, Python will raise a <cite>ValueError</cite>. Always make sure the string can be converted before doing so!</p>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age_str</span> <span class="o">=</span> <span class="s2">&quot;28&quot;</span>
+<span class="n">age_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age_int</span><span class="p">)</span>
+
+<span class="n">pi_str</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span>
+<span class="n">pi_float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pi_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi_float</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This can be particularly useful when you’re getting input from users, since input is usually received as a string.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your age: &quot;</span><span class="p">)</span>
+<span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="s2">&quot;years old.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="numbers">
+<h3>Numbers<a class="headerlink" href="#numbers" title="Link to this heading">#</a></h3>
+<p>You can perform arithmetic operations on numbers as you might expect (you’ll never need a calculator again!):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">addition</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">subtraction</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="n">multiplication</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="n">division</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+<span class="n">floor_division</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>
+<span class="n">modulus</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Addition:&quot;</span><span class="p">,</span> <span class="n">addition</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Subtraction:&quot;</span><span class="p">,</span> <span class="n">subtraction</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Multiplication:&quot;</span><span class="p">,</span> <span class="n">multiplication</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Division:&quot;</span><span class="p">,</span> <span class="n">division</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Floor Division:&quot;</span><span class="p">,</span> <span class="n">floor_division</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Modulus:&quot;</span><span class="p">,</span> <span class="n">modulus</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Power:&quot;</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h3>
+<p>You can add items to a list using the <cite>append()</cite> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also access items in a list using their index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
+<span class="n">first_fruit</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first_fruit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that the index starts at 0, so <cite>fruits[0]</cite> gives you the first item in the list. This is called “zero-based indexing.” and it’s a common convention in programming languages.</p>
+</section>
+</section>
+<section id="practice">
+<h2>Practice<a class="headerlink" href="#practice" title="Link to this heading">#</a></h2>
+<p>Time for some practice! Try creating your own variables of different types and performing some operations on them. Experimenting is a great way to learn!</p>
+<p>You can check out the <a class="reference external" href="../problems/greeting.html">greeting</a> problem in the Problems section to apply what you’ve learned about variables in a practical scenario.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basics">The Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-a-variable">Setting a variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-variable">Using a variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-a-variable">Changing a variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-data-types">Variable data types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-on-variables">Operations on variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numbers">Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice">Practice</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Wagg
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tom Wagg.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
