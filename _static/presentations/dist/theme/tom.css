@@ -19,9 +19,9 @@
   * GLOBAL STYLES
   *********************************************/
  :root {
-   --primary-col: rgb(144, 85, 227);
-   --secondary-col: #f23c7f;
-   --tertiary-col: #ea921e;
+   --primary-col: #51b46d;
+   --secondary-col: #7fc994;
+   --tertiary-col: #a2be4b;
    --r-background-color: #222;
    --r-main-font: Ubuntu, sans-serif;
    --r-main-font-size: 40px;
@@ -42,8 +42,8 @@
    --r-heading4-size: 1em;
    --r-code-font: monospace;
    --r-link-color: var(--primary-col);
-   --r-link-color-dark: #6a1520;
-   --r-link-color-hover: #dd5566;
+   --r-link-color-dark: #7fc994;
+   --r-link-color-hover: #7fc994;
    --r-selection-background-color: rgb(178, 143, 255);
    --r-selection-color: #fff;
    --r-overlay-element-bg-color: 240, 240, 240;
