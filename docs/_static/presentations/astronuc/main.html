@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>LEGWORK demo</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/tom.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+        <link rel="stylesheet" href="../plugin/bootstrap/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="../plugin/bootstrap/bootstrap-utilities.min.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-external="slides/title.html"></section>
+                <section data-external="slides/what-is-it.html"></section>
+                <section data-external="slides/installation.html"></section>
+                <section data-external="slides/capabilities.html"></section>
+                <section data-external="slides/motivation.html"></section>
+                <section data-external="slides/case_study.html"></section>
+                <section data-external="slides/demo-1.html"></section>
+                <section data-external="slides/demo-2.html"></section>
+                <section data-external="slides/demo-3.html"></section>
+                <section data-external="slides/conclusions.html"></section>
+			</div>
+		</div>
+
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+
+
+
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX],
+
+				dependencies:[
+					{
+						src: '../plugin/external/external.js',
+						condition: function() {
+							return !!document.querySelector( '[data-external],[data-external-replace]' );
+						}
+					},
+				],
+
+                width: 1200
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<section>
+    <h3 class="header">Motivation</h3>
+    Why do we need LEGWORK?
+</section>
+
+<section data-auto-animate>
+    <h3>Convenient</h3>
+    <p class="fragment fade-up">The equations behind LEGWORK combine a series of papers</p>
+    <div class="row fragment fade-in">
+        <div class="col-4">
+            <p class="fw-bold">Orbital evolution</p>
+            <p class="citation">Peters & Mathews (1963), Peters (1964)</p>
+        </div>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <h3>Convenient</h3>
+    <p>The equations behind LEGWORK combine a series of papers</p>
+    <div class="row">
+        <div class="col-4">
+            <p class="fw-bold">Orbital evolution</p>
+            <p class="citation">Peters & Mathews (1963), Peters (1964)</p>
+        </div>
+        <div class="col-4">
+            <p class="fw-bold">GW strain and SNR</p>
+            <p class="citation">e.g. Flanagan & Hughes 1998, Finn & Thorne 2000</p>
+        </div>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <h3>Convenient</h3>
+    <p>The equations behind LEGWORK combine a series of papers</p>
+    <div class="row">
+        <div class="col-4">
+            <p class="fw-bold">Orbital evolution</p>
+            <p class="citation">Peters & Mathews (1963), Peters (1964)</p>
+        </div>
+        <div class="col-4">
+            <p class="fw-bold">GW strain and SNR</p>
+            <p class="citation">e.g. Flanagan & Hughes 1998, Finn & Thorne 2000</p>
+        </div>
+        <div class="col-4">
+            <p class="fw-bold">Sensitivity curves</p>
+            <p class="citation">Robson+19, Huang+20</p>
+        </div>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <h3>Convenient</h3>
+    <p>Would you rather...</p>
+    <div class="row">
+        <div class="col" data-id="eqs">
+            <p class="fragment fade-in">Implement the equations</p>
+            <div class="r-stack" style="font-size:0.7em">
+                <p class="fragment fade-in-then-out">
+                    $$ \langle \rho \rangle^2 = \sum_{n = 1}^{\infty} \int_0^{\infty} d f_n \frac{h_{c, n}^2}{f_n^2 S_{\rm n}(f_n)} $$
+                </p>
+                <p class="fragment fade-in-then-out">
+                    $$ h_{c,n}^2 = \frac{2^{5/3}}{3 \pi^{4/3}} \frac{(G \mathcal{M}_c)^{5/3}}{c^3 D_L^2} \frac{1}{f_{\rm orb}^{1/3}} \frac{g(n, e)}{n F(e)} $$
+                </p>
+                <p class="fragment fade-in-then-out">
+                    $$ S_{\rm n}(f) = \frac{10}{3 L^2} \left(P_{\rm OMS}(f) + 2\left(1 + \cos^2 \left(\frac{f}{f_*}\right)\right) \frac{P_{\rm acc}(f)}{(2 \pi f)^4}\right) \times \left(1 + \frac{6}{10} \left(\frac{f}{f_*}\right)^2\right) + S_c(f) $$
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <h3>Convenient</h3>
+    <p>Would you rather...</p>
+    <div class="row">
+        <div class="col-6 fragment semi-fade-out" data-id="eqs">
+            <p>Implement the equations</p>
+            <div style="font-size:0.3em">
+                $$ \langle \rho \rangle^2 = \sum_{n = 1}^{\infty} \int_0^{\infty} d f_n \frac{h_{c, n}^2}{f_n^2 S_{\rm n}(f_n)} $$
+                $$ h_{c,n}^2 = \frac{2^{5/3}}{3 \pi^{4/3}} \frac{(G \mathcal{M}_c)^{5/3}}{c^3 D_L^2} \frac{1}{f_{\rm orb}^{1/3}} \frac{g(n, e)}{n F(e)} $$
+                $$ S_{\rm n}(f) = \frac{10}{3 L^2} \left(P_{\rm OMS}(f) + 2\left(1 + \cos^2 \left(\frac{f}{f_*}\right)\right) \frac{P_{\rm acc}(f)}{(2 \pi f)^4}\right) \times \left(1 + \frac{6}{10} \left(\frac{f}{f_*}\right)^2\right) + S_c(f) $$
+            </div>
+        </div>
+        <div class="col-6">
+            <p>Use LEGWORK</p>
+            <pre><code data-trim data-noescape>
+                Source.get_snr()
+            </code></pre>
+        </div>
+    </div>
+</section>
+
+
+<!-- <p class="fragment fade-in">Re-deriving and implementing them presents a barrier to entry in the field and can lead to mistakes.</p> -->
+
+<section>
+    <h3>Open-source</h3>
+    <div class="r-stack">
+        <p class="fragment fade-in-then-out">The open-source nature of LEGWORK promotes <span class='theme-col'>collaboration</span> on a centralised tool</p>
+        <p class="fragment fade-in"><span class='theme-col'>Reduces barrier to entry</span> in the field and <span class='theme-col'>avoids mistakes</span> from re-deriving and implementing the equations</p>
+    </div>
+</section>
+
+<section>
+    <h3>Efficient</h3>
+    <div class="r-stack">
+        <p class="fragment fade-in-then-out">LEGWORK is fully vectorised and easily scales to large populations on a galactic scale</p>
+        <p class="fragment fade-in">SNR and eccentricity approximations are applied dynamically based on user-tuned tolerances</p>
+    </div>
+</section>

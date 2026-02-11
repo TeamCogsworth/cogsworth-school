@@ -1,0 +1,58 @@
+# name: build & deploy sphinx docs to gh-pages
+name: docs
+
+on:
+  push:
+    branches: [ main ]          # change if your default branch is not 'main'
+    paths:
+      - 'docs/**'               # only run when docs or this workflow change
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:            # allow manual runs from the actions tab
+
+# github pages needs write access to push to gh-pages
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # keep history shallow but present
+
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'  # adjust if your project needs a different version
+
+      - name: cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: install dependencies
+        run: |
+          cd docs/
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: build html with make
+        run: |
+          make -C docs html
+        # if you don't use a makefile, replace with:
+        # run: python -m sphinx -b html docs docs/_build/html
+
+      - name: deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}   # provided by github actions
+          publish_branch: gh-pages                    # will create the branch if missing
+          publish_dir: docs/_build/html               # where sphinx wrote the site
+          keep_files: false                           # clean old files
+          enable_jekyll: false                        # drop a .nojekyll for sphinx assets
