@@ -27,7 +27,7 @@ I'd recommend opening the slides in a separate tab or window so that you can ref
 Overview
 --------
 
-Welcome to this lab everyone, I hope you've had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use ``cogsworth`` to track the timing and location of supernovae and binary neutron star mergers in a variety of galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution and as sources of :math:`r`-process enrichment.
+Welcome to this lab everyone, I hope you've had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use ``cogsworth`` to track the timing and location of supernovae in galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution.
 
 We're going to incrementally develop a suite of simulations that uses ``cogsworth`` to track these events and see how they are sensitive to different aspects of binary evolution and galactic dynamics.
 
@@ -41,7 +41,7 @@ By the end of this lab, my aim is that you will:
     - how ``cogsworth`` connects population synthesis to galactic dynamics self-consistently
 - **Be able to**
     - create your own simulations using ``cogsworth``
-    - track the timing and location of supernovae and binary neutron star mergers in galaxies
+    - track the timing and location of supernovae in galaxies
 - **Have ideas**
     - about the general capabilities of the code
     - for how to use ``cogsworth`` in your own research!
@@ -59,4 +59,3 @@ By the end of this lab, my aim is that you will:
     astronuc/part-2
     astronuc/part-3
     astronuc/part-4
-    astronuc/part-5
