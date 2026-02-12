@@ -15,12 +15,19 @@ author = 'Tom Wagg'
 
 extensions = [
     'sphinx_copybutton',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinx.ext.intersphinx',
 ]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
+    'cogsworth': ('https://cogsworth.readthedocs.io/en/latest/', None),
+    'gala': ('https://gala.adrian.pw/en/latest/', None),
+    'cosmic': ('https://cosmic-popsynth.github.io/COSMIC/', None),
+}
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -56,7 +63,6 @@ html_theme_options = {
         {
             "name": "ask a question",
             "url": "https://github.com/TomWagg/cogsworth/issues/new?template=question.md",
-            # stack a question icon on a speech bubble icon to make a "ask a question" icon
             "icon": "fa-solid fa-comment-dots",
             "type": "fontawesome",
         }
