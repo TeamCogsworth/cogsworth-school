@@ -29,4 +29,4 @@ Welcome! This is the documentation for ``cogsworth`` schools, where you can lear
     :caption: Labs
     :hidden:
 
-    pages/labs/astronuc
+    pages/labs/astronuc-index

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Preparing for the labs &#8212; cogsworth school</title>
+    <title>AstroNuc 2026 &#8212; cogsworth school</title>
   
   
   
@@ -47,12 +47,14 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/background/start';</script>
+    <script>window.MathJax = {"tex": {"tags": "ams", "useLabelIds": true}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/labs/astronuc-index';</script>
     <link rel="icon" href="../../_static/cog.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Useful reference material" href="reference.html" />
-    <link rel="prev" title="Home" href="../../index.html" />
+    <link rel="next" title="Part 1: Creating your first population" href="astronuc/part-1.html" />
+    <link rel="prev" title="Understand your output" href="../background/output.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -204,19 +206,19 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preparing for the labs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">Useful reference material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output.html">Understand your output</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/start.html">Preparing for the labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/reference.html">Useful reference material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/output.html">Understand your output</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/astronuc-index.html">AstroNuc 2026</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../labs/astronuc/part-1.html">Part 1: Creating your first population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../labs/astronuc/part-2.html">Part 2: Identifying specific objects in the population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../labs/astronuc/part-3.html">Part 2: Inspect supernovae</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../labs/astronuc/part-4.html">Part 4: Varying our assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../labs/astronuc/part-5.html">Part 5: Where are the NSNS mergers?</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">AstroNuc 2026</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-1.html">Part 1: Creating your first population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-2.html">Part 2: Identifying specific objects in the population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html">Part 2: Inspect supernovae</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html">Part 4: Varying our assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-5.html">Part 5: Where are the NSNS mergers?</a></li>
 </ul>
 </details></li>
 </ul>
@@ -296,7 +298,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -307,11 +311,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Preparing for the labs</h1>
+    <h1>AstroNuc 2026</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slides">Slides</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -321,9 +335,101 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="preparing-for-the-labs">
-<h1>Preparing for the labs<a class="headerlink" href="#preparing-for-the-labs" title="Link to this heading">#</a></h1>
-<p>Hi there! Before starting the labs, please follow these instructions to set up your coding environment so you’re ready to go on the day!</p>
+  <section id="astronuc-2026">
+<span id="astronuc"></span><h1>AstroNuc 2026<a class="headerlink" href="#astronuc-2026" title="Link to this heading">#</a></h1>
+<section id="slides">
+<h2>Slides<a class="headerlink" href="#slides" title="Link to this heading">#</a></h2>
+<p>The page below shows the slides that I’ll use while teaching this lab. Once you click on the slides you can navigate through them using the arrow keys on your keyboard.
+I’d recommend opening the slides in a separate tab or window so that you can refer to them while working through the lab.</p>
+<iframe src="../../_static/presentations/astronuc/main.html" width="100%" height="500px"></iframe><p class="sd-text-center"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm reference external" href="../../_static/presentations/astronuc/main.html"><span>View full-screen presentation</span></a></p>
+<hr style="margin: 4rem 0;"></section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Welcome to this lab everyone, I hope you’ve had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track the timing and location of supernovae and binary neutron star mergers in a variety of galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution and as sources of <span class="math notranslate nohighlight">\(r\)</span>-process enrichment.</p>
+<p>We’re going to incrementally develop a suite of simulations that uses <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track these events and see how they are sensitive to different aspects of binary evolution and galactic dynamics.</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>By the end of this lab, my aim is that you will:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Understand</strong></dt><dd><ul>
+<li><p>how population synthesis simulations create large evolved populations of stars and binaries</p></li>
+<li><p>how <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> connects population synthesis to galactic dynamics self-consistently</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Be able to</strong></dt><dd><ul>
+<li><p>create your own simulations using <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code></p></li>
+<li><p>track the timing and location of supernovae and binary neutron star mergers in galaxies</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Have ideas</strong></dt><dd><ul>
+<li><p>about the general capabilities of the code</p></li>
+<li><p>for how to use <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> in your own research!</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<hr style="margin: 4rem 0;"><div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Outline</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="astronuc/part-1.html">Part 1: Creating your first population</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-1.html#demo">Demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#initialising-a-population">Initialising a Population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#sampling-binaries">Sampling binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#performing-stellar-evolution">Performing stellar evolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#integrating-galactic-orbits">Integrating galactic orbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#quick-recap">Quick recap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#inspecting-the-most-massive-binary">Inspecting the most massive binary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-1.html#tasks">Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#your-own-population">Your own population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#distributions">Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-1.html#your-favourite-binary">Your favourite binary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="astronuc/part-2.html">Part 2: Identifying specific objects in the population</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-2.html#demo">Demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-2.html#inspect-initial-conditions">Inspect initial conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-2.html#mask-based-on-initial-conditions">Mask based on initial conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-2.html#mask-based-on-final-state">Mask based on final state</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-2.html#task-s">Task(s)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-2.html#initial-conditions-of-mergers">Initial conditions of mergers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-2.html#bonus-final-positions-of-compact-objects">[Bonus] Final positions of compact objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="astronuc/part-3.html">Part 2: Inspect supernovae</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html#demo">Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="astronuc/part-4.html">Part 4: Varying our assumptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html#demo">Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="astronuc/part-5.html">Part 5: Where are the NSNS mergers?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-5.html#demo">Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-5.html#tasks">Tasks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 </section>
 
 
@@ -338,20 +444,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../index.html"
+       href="../background/output.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Home</p>
+        <p class="prev-next-title">Understand your output</p>
       </div>
     </a>
     <a class="right-next"
-       href="reference.html"
+       href="astronuc/part-1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Useful reference material</p>
+        <p class="prev-next-title">Part 1: Creating your first population</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -361,6 +467,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slides">Slides</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

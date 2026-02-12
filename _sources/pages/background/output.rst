@@ -1,5 +1,5 @@
-How do I interpret this output??
-================================
+Understand your output
+======================
 
 ``cogsworth`` generates a lot of different outputs. The full documentation explains this in detail, but something that will come up a lot is interpreting the output tables from population synthesis (which is coming from ``COSMIC`` by default).
 

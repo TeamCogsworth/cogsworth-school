@@ -14,19 +14,23 @@
     max-width: min(100%, 150px);
 }
 
+/* if there's no secondary sidebar element at all, don't reserve space for it */
 @media (min-width: 1200px) {
-  /* if there's no secondary sidebar element at all, don't reserve space for it */
   .bd-main:not(:has(.bd-sidebar-secondary)) .bd-content .bd-article-container {
     max-width: 100% !important;
   }
 
-  /* also remove the 60em-ish line length cap on full-width pages (optional) */
   .bd-main:not(:has(.bd-sidebar-secondary)) .bd-article,
   .bd-main:not(:has(.bd-sidebar-secondary)) .bd-article-container {
     max-width: 100% !important;
   }
 }
-
 .bd-main:not(:has(.bd-sidebar-secondary)) .bd-article-container {
     max-width: 100% !important;
+}
+
+
+/* Reduce indentation for lists */
+ul dd {
+    margin-left: 0px!important;
 }
