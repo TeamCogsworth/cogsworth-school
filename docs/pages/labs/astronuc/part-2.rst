@@ -23,6 +23,10 @@ We've also explored some of the output tables already, including the ``initial_b
     )
     plt.show()
 
+.. margin::
+
+    In ``COSMIC``, by default there's a lower limit on the initial secondary mass such that its pre-main-sequence lifetime is not longer than the main sequence lifetime of the primary. This is why there's a cutoff of objects in the lower right of the plot.
+
 .. figure:: /_static/astronuc/initial_masses.png
     :align: center
     :width: 80%
