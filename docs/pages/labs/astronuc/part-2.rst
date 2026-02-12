@@ -114,7 +114,10 @@ Initial conditions of mergers
 
     I'd recommend a log-scale for both the mass and orbital period!
 
-First, make a plot of the initial orbital period vs the initial primary mass for all binaries in the population.
+.. admonition:: Task 2.1.1
+    :class: admonition-task
+
+    First, make a plot of the initial orbital period vs the initial primary mass for all binaries in the population.
 
 .. dropdown:: Hint
     :color: info
@@ -143,7 +146,10 @@ First, make a plot of the initial orbital period vs the initial primary mass for
 
         Initial orbital period vs initial primary mass for all binaries in the population.
 
-Now, create a mask that selects only binaries that will eventually merge (i.e. that end with a separation of exactly :math:`a = 0.0 {\rm R_\odot}`).
+.. admonition:: Task 2.1.2
+    :class: admonition-task
+
+    Now, create a mask that selects only binaries that will eventually merge (i.e. that end with a separation of exactly :math:`a = 0.0 {\rm R_\odot}`).
 
 .. dropdown:: Hint
     :color: info
@@ -157,7 +163,10 @@ Now, create a mask that selects only binaries that will eventually merge (i.e. t
 
         merge_mask = p.final_bpp["sep"] == 0.0
 
-Now, update your plot to highlight the binaries that will eventually merge (however you like, outline the merger points, or just overplot them in a different color, etc).
+.. admonition:: Task 2.1.3
+    :class: admonition-task
+
+    Now, update your plot to highlight the binaries that will eventually merge (however you like, outline the merger points, or just overplot them in a different color, etc).
 
 .. dropdown:: Click here to reveal the answer
     :color: danger
@@ -188,7 +197,10 @@ Now, update your plot to highlight the binaries that will eventually merge (howe
         Initial orbital period vs initial primary mass, with mergers highlighted.
 
 
-What trends do you notice in your plot? Which conditions seem to lead to mergers? Why?
+.. admonition:: Task 2.1.4
+    :class: admonition-task
+
+    What trends do you notice in your plot? Which conditions seem to lead to mergers? Why?
 
 .. dropdown:: Click here to reveal the answer
     :color: danger
@@ -198,7 +210,12 @@ What trends do you notice in your plot? Which conditions seem to lead to mergers
 [Bonus] Final positions of compact objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you've still got time, let's try something else! First, make a plot of the final positions of the primary star from each binary in the population. Plot the Galactocentric radius (:math:`R = \sqrt{x^2 + y^2}`) on the x-axis and the absolute Galactocentric height (:math:`|z|`) on the y-axis. I recommend using a log-scale for both axes.
+If you've still got time, let's try something else!
+
+.. admonition:: Task 2.2.1
+    :class: admonition-task
+
+    First, make a plot of the final positions of the primary star from each binary in the population. Plot the Galactocentric radius (:math:`R = \sqrt{x^2 + y^2}`) on the x-axis and the absolute Galactocentric height (:math:`|z|`) on the y-axis. I recommend using a log-scale for both axes.
 
 .. dropdown:: Hint
     :color: info
@@ -230,7 +247,10 @@ If you've still got time, let's try something else! First, make a plot of the fi
 
         Final Galactocentric positions of the primary stars in the population.
 
-Now, create a mask that selects only binaries where either star ends as a neutron star or black hole (i.e. that receive a natal kick).
+.. admonition:: Task 2.2.2
+    :class: admonition-task
+
+    Now, create a mask that selects only binaries where either star ends as a neutron star or black hole (i.e. that receive a natal kick).
 
 .. dropdown:: Hint
     :color: info
@@ -244,7 +264,10 @@ Now, create a mask that selects only binaries where either star ends as a neutro
 
         compact_object_mask = p.final_bpp["kstar_1"].isin([13, 14]) | p.final_bpp["kstar_2"].isin([13, 14])
 
-Now, update your plot to highlight the binaries where the primary star ends as a neutron star or black hole.
+.. admonition:: Task 2.2.3
+    :class: admonition-task
+
+    Now, update your plot to highlight the binaries where the primary star ends as a neutron star or black hole.
 
 .. dropdown:: Click here to reveal the answer
     :color: danger
@@ -272,7 +295,10 @@ Now, update your plot to highlight the binaries where the primary star ends as a
 
         Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted.
 
-What trends do you notice in your plot? Do the compact objects seem to have different final positions than the rest of the population? Is that true for all of them? Why/why not?
+.. admonition:: Task 2.2.4
+    :class: admonition-task
+
+    What trends do you notice in your plot? Do the compact objects seem to have different final positions than the rest of the population? Is that true for all of them? Why/why not?
 
 .. dropdown:: Click here to reveal the answer
     :color: danger

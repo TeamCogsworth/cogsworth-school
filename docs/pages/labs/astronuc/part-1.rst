@@ -172,9 +172,12 @@ Now it's your turn! Try the following tasks to get familiar with creating and in
 Your own population
 ^^^^^^^^^^^^^^^^^^^
 
-To start, initialise a population with 1000 binaries, then sampling the binaries, evolve them, and integrate their orbits.
+.. admonition:: Task 1.1
+    :class: admonition-task
 
-What are the properties of the first few binaries in the population?
+    To start, initialise a population with 1000 binaries, then sampling the binaries, evolve them, and integrate their orbits.
+
+    What are the initial properties of the first few binaries in the population?
 
 .. dropdown:: Click here to show the answer
     :color: danger
@@ -193,7 +196,10 @@ What are the properties of the first few binaries in the population?
 Distributions
 ^^^^^^^^^^^^^
 
-Now let's make some plots. First, what does **the distribution of galactic birth times** look like for the binaries in the population?
+.. admonition:: Task 1.2
+    :class: admonition-task
+
+    Now let's make some plots. First, what does **the distribution of galactic birth times** look like for the binaries in the population?
 
 .. dropdown:: Hint
     :color: info
@@ -216,15 +222,18 @@ Now let's make some plots. First, what does **the distribution of galactic birth
 Your favourite binary
 ^^^^^^^^^^^^^^^^^^^^^
 
-Now pick a binary of interest to you and inspect its evolution with a cartoon plot and look at its orbit through the galaxy.
+.. admonition:: Task 1.3
+    :class: admonition-task
 
-Some inspiration for picking a binary:
+    Now pick a binary of interest to you and inspect its evolution with a cartoon plot and look at its orbit through the galaxy.
 
-- The most massive binary in the population
-- A binary that ends by creating at least one neutron star
-- A random binary!
+    Some inspiration for picking a binary:
 
-Since this is a "choose your own adventure", use the tabs below for what you chose.
+    - The most massive binary in the population
+    - A binary that ends by creating at least one neutron star
+    - A random binary!
+
+    Since this is a "choose your own adventure", use the tabs below for what you chose.
 
 .. tab-set::
 
@@ -289,7 +298,7 @@ Since this is a "choose your own adventure", use the tabs below for what you cho
 
     .. tab-item:: Something else
 
-        You'll have to ask Tom if you want a hint for this!
+        You'll have to ask Tom if you want a hint/answer for this!
 
 
 And now it's time to move on to Part 2, where we'll learn how to identify specific types of objects in the population and make some more plots!
