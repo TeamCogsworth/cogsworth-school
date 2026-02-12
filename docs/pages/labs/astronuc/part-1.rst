@@ -130,9 +130,11 @@ Wowwww - lots of numberssss! This isn't quite so easy to parse, so let's turn th
 
 That should give you something like this:
 
-.. image:: ../../../_static/astronuc/cartoon_binary.png
+.. figure:: ../../../_static/astronuc/cartoon_binary.png
     :align: center
-    :alt: Cartoon binary evolution plot
+    :width: 80%
+
+    Cartoon evolution of the most massive binary in the population.
 
 We can also look at the orbit of this binary through the galaxy. By default, the :meth:`~cogsworth.pop.Population.plot_orbit` method plots the orbit from birth until present day, but you can also specify a custom time range.
 
@@ -146,13 +148,17 @@ We can also look at the orbit of this binary through the galaxy. By default, the
 
 And those plots might look something like this:
 
-.. image:: ../../../_static/astronuc/orbit_full.png
+.. figure:: ../../../_static/astronuc/orbit_full.png
     :align: center
-    :alt: Orbit of the most massive binary from birth until present day
+    :width: 80%
+    
+    Orbit of the most massive binary from birth until present day
 
-.. image:: ../../../_static/astronuc/orbit_zoom.png
+.. figure:: ../../../_static/astronuc/orbit_zoom.png
     :align: center
-    :alt: Orbit of the most massive binary for the first 100 Myr of evolution
+    :width: 80%
+    
+    Orbit of the most massive binary for the first 100 Myr of evolution
 
 .. raw:: html
 
@@ -171,6 +177,7 @@ To start, initialise a population with 1000 binaries, then sampling the binaries
 What are the properties of the first few binaries in the population?
 
 .. dropdown:: Click here to show the answer
+    :color: danger
 
     .. code-block:: python
 
@@ -189,10 +196,12 @@ Distributions
 Now let's make some plots. First, what does **the distribution of galactic birth times** look like for the binaries in the population?
 
 .. dropdown:: Hint
+    :color: info
 
     You can find the birth times of the binaries in the ``initial_galaxy`` attribute of the population. The birth times are stored in the ``tau`` attribute of the galaxy and are ''lookback times'', meaning that a birth time of 0 corresponds to a binary that was born at the present day, while a birth time of 10 Gyr corresponds to a binary that was born 10 Gyr ago.
 
 .. dropdown:: Click here to show the answer
+    :color: danger
 
     .. code-block:: python
 
@@ -222,10 +231,12 @@ Since this is a "choose your own adventure", use the tabs below for what you cho
     .. tab-item:: Most massive binary
 
         .. dropdown:: Hint
+            :color: info
 
             You can find the most massive binary by looking at the initial mass of the primary star in each binary and finding the index of the maximum value. Remember that each binary has a unique ``bin_num`` that you can use to track it across different tables and plots.
 
         .. dropdown:: Click here to show the answer
+            :color: danger
 
             .. code-block:: python
 
@@ -239,12 +250,14 @@ Since this is a "choose your own adventure", use the tabs below for what you cho
     .. tab-item:: Neutron star
 
         .. dropdown:: Hint
+            :color: info
 
             You can find binaries that create neutron stars by looking at the ``kstar_1`` and ``kstar_2`` columns in the bpp table, which give the stellar type of each star at each timestep. A stellar type of 13 corresponds to a neutron star.
 
             Remember that the :attr:`~cogsworth.pop.Population.final_bpp` table shows the final state of the binaries at the present day.
 
         .. dropdown:: Click here to show the answer
+            :color: danger
 
             .. code-block:: python
 
@@ -263,6 +276,7 @@ Since this is a "choose your own adventure", use the tabs below for what you cho
     .. tab-item:: Random binary
     
         .. dropdown:: Click here to show the answer
+            :color: danger
 
             .. code-block:: python
 
