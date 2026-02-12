@@ -27,7 +27,7 @@ I'd recommend opening the slides in a separate tab or window so that you can ref
 Overview
 --------
 
-Welcome to this lab everyone, I hope you've had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use ``cogsworth`` to track the timing and location of supernovae and binary neutron star mergers in a variety of galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution and as sources of $r$-process enrichment.
+Welcome to this lab everyone, I hope you've had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use ``cogsworth`` to track the timing and location of supernovae and binary neutron star mergers in a variety of galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution and as sources of :math:`r`-process enrichment.
 
 We're going to incrementally develop a suite of simulations that uses ``cogsworth`` to track these events and see how they are sensitive to different aspects of binary evolution and galactic dynamics.
 
@@ -57,25 +57,6 @@ By the end of this lab, my aim is that you will:
 
     astronuc/part-1
     astronuc/part-2
-
-
-
-.. Outline
-
-.. **Part 2**: Identifying specific objects in the population
-..     - Demo
-..         - Show how to identify binaries that merge in the present day
-..         - Show how to plot initial conditions
-..         - Mask based on those initial conditions
-..         - Mask based on final stellar types 
-
-..     - Tasks
-..         - 1. Initial condition stuff
-..             - Plot the initial orbital period vs initial mass
-..             - Update the plot to highlight binaries that will eventually merge
-..         - 2. Final binary stuff
-..             - Plot the final positions of everything
-..             - Update the plot to highlight binaries that are compact objects (hence received kicks)
-
-.. **Part 3**: Tracking supernovae
-..     - Demo
+    astronuc/part-3
+    astronuc/part-4
+    astronuc/part-5

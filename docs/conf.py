@@ -14,10 +14,15 @@ author = 'Tom Wagg'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    'sphinx.ext.mathjax',
     'sphinx_copybutton',
     'sphinx_design',
     'sphinx.ext.intersphinx',
 ]
+
+mathjax3_config = {
+    'tex': {'tags': 'ams', 'useLabelIds': True},
+}
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
