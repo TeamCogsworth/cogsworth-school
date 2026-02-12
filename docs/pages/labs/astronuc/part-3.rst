@@ -20,7 +20,7 @@ First things first, let's make a slightly different population, which preferenti
     import cogsworth
 
     p = cogsworth.pop.Population(
-        n_binaries=2000,
+        n_binaries=10_000,
         use_default_BSE_settings=True,
         final_kstar1=[13, 14],          # aim to sample systems that produce a NS/BH
         final_kstar2=[13, 14],          # same for secondary star
@@ -239,6 +239,221 @@ And now we can plot the positions of these common-envelope events in the galaxy!
 Tasks
 *****
 
-Now it's your turn to do the same for supernovae! The code from the demo above should be helpful for this
+Now it's your turn to do the same for supernovae! The code from the demo above should be helpful for this :)
 
+.. admonition:: Task 3.1
+    :class: admonition-task
 
+    Create a population like the one above (~10000 binaries, that preferentially samples higher mass binaries). Write a mask for the ``bpp`` table that selects only the rows corresponding to supernova events. Note that supernovae are labelled as either ``evol_type == 15`` (primary star supernova) or ``evol_type == 16`` (secondary star supernova).
+
+    It will be useful to know whether a supernova corresponds to the primary or secondary star, so create two separate masks for these.
+
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
+        
+        .. code-block:: python
+
+            import cogsworth
+
+            p = cogsworth.pop.Population(
+                n_binaries=2000,
+                use_default_BSE_settings=True,
+                final_kstar1=[13, 14],          # aim to sample systems that produce a NS/BH
+                final_kstar2=[13, 14],          # same for secondary star
+            )
+            p.create_population()
+            
+            primary_sn = p.bpp["evol_type"] == 15
+            secondary_sn = p.bpp["evol_type"] == 16
+            sn_mask = primary_sn | secondary_sn
+
+.. admonition:: Task 3.2
+    :class: admonition-task
+
+    Now make a histogram that shows the distribution of supernova times in the frame of the binary. Ensure to create separate histograms for primary and secondary supernovae.
+
+    Use the same bins for both histograms and set ``density=True`` in both calls to ``plt.hist`` so that you can compare the shapes of the distributions and not just the number of supernovae.
+
+    What do you notice about the timing of primary vs. secondary supernovae? Are they the same? Why/why not?
+
+    .. dropdown:: Hint
+        :color: info
+
+        Try constructing the bins before you call ``plt.hist``. You can use ``np.linspace`` to create an array of bin edges that go from 0 to 200 Myr (since most supernovae occur within this time frame) and have, say, 40 bins.
+
+        .. code-block:: python
+
+            bins = np.linspace(0, 200, 40)
+
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
+
+        .. code-block:: python
+
+            bins = np.linspace(0, 200, 40)
+
+            fig, ax = plt.subplots()
+
+            ax.hist(p.bpp["tphys"][primary_sn], bins=bins, density=True, label="Primary SN")
+            ax.hist(p.bpp["tphys"][secondary_sn], bins=bins, alpha=0.7, density=True, label="Secondary SN")
+            ax.set(
+                xlabel="Time in frame of binary, $t_b$ [Myr]",
+                ylabel=r"${\rm}dN/{\rm d}t_b$",
+            )
+            ax.legend()
+            plt.show()
+
+        .. figure:: ../../../_static/astronuc/sn_times_binary.png
+            :align: center
+            :width: 80%
+            :alt: Histogram of supernova times in the frame of the binary
+
+            Distribution of supernova times in the frame of the binary, with primary and secondary supernovae shown separately.
+
+        The timing of primary and secondary supernovae is slightly different. Primary supernovae typically occur earlier than secondary supernovae. This is because the primary star is initially more massive and therefore evolves faster, so it reaches the end of its life and explodes as a supernova before the secondary star does. The secondary star may also be affected by mass transfer from the primary, which can alter its evolution and delay its supernova explosion.
+
+.. admonition:: Task 3.3
+    :class: admonition-task
+
+    Now compute the timing of these supernovae in the galactic frame and make a histogram of these galactic times. Do primary and secondary supernovae have different distributions on galactic timescales? Why/why not?
+
+    .. dropdown:: Hint
+        :color: info
+
+        Remember that you can convert the supernova times to the galactic frame using the same method as for the common-envelope events. You will need to get the ``bin_num`` of each supernova event, find the corresponding index in the ``p.bin_nums`` array, and then use this index to get the birth time of the binary from ``p.initial_galaxy.tau``.
+
+        The conversion is given by:
+
+        .. math::
+
+            t_{\rm gal} = t_{\rm present} - \tau + t_{\rm sn}
+
+        where :math:`t_{\rm sn}` is the time of the supernova in the binary frame and :math:`t_{\rm present}` is the present day time in the galaxy (which is 12 Gyr by default, but is stored in the :attr:`~cogsworth.pop.Population.max_ev_time` attribute).
+
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
+
+        .. code-block:: python
+
+            # get the bin_nums of the supernova events
+            primary_sn_bin_nums = p.bpp["bin_num"][primary_sn]
+            secondary_sn_bin_nums = p.bpp["bin_num"][secondary_sn]
+
+            # get the indices of these bin_nums in the p.bin_nums array
+            primary_sn_indices = np.searchsorted(p.bin_nums, primary_sn_bin_nums)
+            secondary_sn_indices = np.searchsorted(p.bin_nums, secondary_sn_bin_nums)
+
+            # use these indices to get tau
+            primary_sn_tau = p.initial_galaxy.tau[primary_sn_indices]
+            secondary_sn_tau = p.initial_galaxy.tau[secondary_sn_indices]
+
+            # compute the galactic times
+            primary_sn_t_gal = p.max_ev_time - primary_sn_tau + p.bpp["tphys"][primary_sn].values * u.Myr
+            secondary_sn_t_gal = p.max_ev_time - secondary_sn_tau + p.bpp["tphys"][secondary_sn].values * u.Myr
+
+            bins = np.linspace(0, 12, 20)
+            fig, ax = plt.subplots()
+            ax.hist(primary_sn_t_gal.to(u.Gyr).value, bins=bins, density=True,
+                    label="Primary SN")
+            ax.hist(secondary_sn_t_gal.to(u.Gyr).value, bins=bins, alpha=0.7,
+                    density=True, label="Secondary SN")
+            ax.set(
+                xlabel="Age of Milky Way at SN, $t_{\rm gal}$ [Gyr]",
+                ylabel=r"${\rm}dN/{\rm}dt_{\rm gal}$",
+            )
+            ax.legend()
+            plt.show()
+
+        .. figure:: ../../../_static/astronuc/sn_times_galaxy.png
+            :align: center
+            :width: 80%
+            :alt: Histogram of supernova times in the frame of the galaxy
+
+            Distribution of supernova times in the frame of the galaxy, with primary and secondary supernovae shown separately.
+
+        The distributions of primary and secondary supernovae on galactic timescales are quite similar. Most of the supernovae (both primary and secondary) occur on short times in the context of the galaxy, so the main driver of the distribution on galactic timescales is the star formation history of the galaxy.
+    
+.. margin::
+
+    One difference from above is that you may now have a situation where a binary has disrupted due to the supernova kick, so the secondary may be on a different orbit. ``cogsworth`` handles this and you can use ``p.primary_orbits`` and ``p.secondary_orbits`` to get the orbits of the primary and secondary stars, respectively, at every time step. So make sure to use the correct one for each supernova!
+
+.. admonition:: Task 3.4
+    :class: admonition-task
+
+    Last but not least, let's find the positions of these supernovae in the galaxy!
+
+    Follow the same method as above to find the positions of these supernovae in the galaxy and make a plot of these positions like the one above (both types together, :math:`x` and :math:`y` limits of 30 kpc and :math:`z` limits of 7.5 kpc should work well for this).
+
+    .. dropdown:: Hint
+        :color: info
+
+        You can use the same method as above, just doing it twice, once for the primaries (using you primary SN mask and ``p.primary_orbits``) and once for the secondaries (using your secondary SN mask and ``p.secondary_orbits``).
+
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
+
+        .. code-block:: python
+
+            primary_sn_positions = np.zeros((len(primary_sn), 3)) * u.kpc
+            secondary_sn_positions = np.zeros((len(secondary_sn), 3)) * u.kpc
+
+            for i in range(len(primary_sn_indices)):
+                # find the corresponding orbit
+                primary_sn_orbit = p.primary_orbits[primary_sn_indices[i]]
+
+                # compute the last timestep where orbit.t is less than primary_sn_t_gal[i]
+                closest_time_index = np.where(primary_sn_orbit.t < primary_sn_t_gal[i])[0][-1]
+
+                # get the position of the binary at this time
+                primary_sn_positions[i] = primary_sn_orbit.pos.xyz[:, closest_time_index]
+
+            # same for secondaries
+            for i in range(len(secondary_sn_indices)):
+                secondary_sn_orbit = p.secondary_orbits[secondary_sn_indices[i]]
+                closest_time_index = np.where(secondary_sn_orbit.t < secondary_sn_t_gal[i])[0][-1]
+                secondary_sn_positions[i] = secondary_sn_orbit.pos.xyz[:, closest_time_index]
+
+            fig, axes = plt.subplots(2, 1, figsize=(8, 9), gridspec_kw={"height_ratios": [1, 4]})
+            for pos, times in zip(
+                [primary_sn_positions, secondary_sn_positions],
+                [primary_sn_t_gal, secondary_sn_t_gal],
+            ):
+
+                XMAX = 30
+                ZMAX = 7.5
+
+                axes[0].scatter(
+                    pos[:, 0], pos[:, 2],
+                    c=times.to(u.Gyr).value, s=5,
+                    cmap="magma", vmin=0, vmax=12
+                )
+
+                axes[1].scatter(
+                    pos[:, 0], pos[:, 1],
+                    c=times.to(u.Gyr).value, s=5,
+                    cmap="magma", vmin=0, vmax=12
+                )
+            axes[0].set(
+                ylabel="$z$ [kpc]",
+                xlim=(-XMAX, XMAX),
+                ylim=(-ZMAX, ZMAX),
+                aspect="equal",
+            )
+            axes[1].set(
+                xlabel="Galactocentric $x$ [kpc]",
+                ylabel="Galactocentric $y$ [kpc]",
+                xlim=(-XMAX, XMAX),
+                ylim=(-XMAX, XMAX),
+                aspect="equal",
+            )
+
+            fig.colorbar(axes[0].collections[0], ax=axes, label="Age of Milky Way at SN [Gyr]")
+
+            plt.show()
+
+        .. figure:: ../../../_static/astronuc/sn_positions.png
+            :align: center
+            :width: 80%
+            :alt: Positions of supernovae in the galaxy
+
+            Positions of supernovae in the galaxy. The colour indicates the age of the Milky Way at which the supernova occurs.
