@@ -34,3 +34,8 @@
 ul dd {
     margin-left: 0px!important;
 }
+
+ul.navbar-icon-links {
+    column-gap: 1rem!important;
+    justify-content: center!important;
+}
