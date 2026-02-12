@@ -119,82 +119,82 @@ Initial conditions of mergers
 
     First, make a plot of the initial orbital period vs the initial primary mass for all binaries in the population.
 
-.. dropdown:: Hint
-    :color: info
+    .. dropdown:: Hint
+        :color: info
 
-    The initial orbital period is given by the ``porb`` column in the ``initial_binaries`` table. You can access this table with ``p.initial_binaries``.
+        The initial orbital period is given by the ``porb`` column in the ``initial_binaries`` table. You can access this table with ``p.initial_binaries``.
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    .. code-block:: python
+        .. code-block:: python
 
-        fig, ax = plt.subplots()
-        ax.scatter(p.initial_binaries["porb"], p.initial_binaries["mass_1"])
-        ax.set(
-            xscale="log",
-            yscale="log",
-            xlabel="Initial orbital period, $P_i$ [days]",
-            ylabel="Initial primary mass, $M_{1, i}$ [M$_\odot$]",
-        )
-        plt.show()
+            fig, ax = plt.subplots()
+            ax.scatter(p.initial_binaries["porb"], p.initial_binaries["mass_1"])
+            ax.set(
+                xscale="log",
+                yscale="log",
+                xlabel="Initial orbital period, $P_i$ [days]",
+                ylabel="Initial primary mass, $M_{1, i}$ [M$_\odot$]",
+            )
+            plt.show()
 
-    .. figure:: ../../../_static/astronuc/initial_porbs_masses.png
-        :align: center
-        :width: 80%
-        :alt: Initial orbital period vs initial primary mass for all binaries in the population
+        .. figure:: ../../../_static/astronuc/initial_porbs_masses.png
+            :align: center
+            :width: 80%
+            :alt: Initial orbital period vs initial primary mass for all binaries in the population
 
-        Initial orbital period vs initial primary mass for all binaries in the population.
+            Initial orbital period vs initial primary mass for all binaries in the population.
 
 .. admonition:: Task 2.1.2
     :class: admonition-task
 
     Now, create a mask that selects only binaries that will eventually merge (i.e. that end with a separation of exactly :math:`a = 0.0 {\rm R_\odot}`).
 
-.. dropdown:: Hint
-    :color: info
+    .. dropdown:: Hint
+        :color: info
 
-    The final separation is given by the ``sep`` column in the ``final_bpp`` table. You can access this table with ``p.final_bpp``.
+        The final separation is given by the ``sep`` column in the ``final_bpp`` table. You can access this table with ``p.final_bpp``.
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    .. code-block:: python
+        .. code-block:: python
 
-        merge_mask = p.final_bpp["sep"] == 0.0
+            merge_mask = p.final_bpp["sep"] == 0.0
 
 .. admonition:: Task 2.1.3
     :class: admonition-task
 
     Now, update your plot to highlight the binaries that will eventually merge (however you like, outline the merger points, or just overplot them in a different color, etc).
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    .. code-block:: python
+        .. code-block:: python
 
-        fig, ax = plt.subplots()
-        ax.scatter(p.initial_binaries["porb"], p.initial_binaries["mass_1"], label="All binaries")
-        ax.scatter(
-            p.initial_binaries["porb"][merger_mask],
-            p.initial_binaries["mass_1"][merger_mask],
-            s=50, edgecolor="darkblue", linewidth=3, facecolor="none", label="Mergers"
-        )
-        ax.legend()
-        ax.set(
-            xscale="log",
-            yscale="log",
-            xlabel="Initial orbital period, $P_i$ [days]",
-            ylabel="Initial primary mass, $M_{1, i}$ [M$_\odot$]",
-        )
-        plt.show()
+            fig, ax = plt.subplots()
+            ax.scatter(p.initial_binaries["porb"], p.initial_binaries["mass_1"], label="All binaries")
+            ax.scatter(
+                p.initial_binaries["porb"][merger_mask],
+                p.initial_binaries["mass_1"][merger_mask],
+                s=50, edgecolor="darkblue", linewidth=3, facecolor="none", label="Mergers"
+            )
+            ax.legend()
+            ax.set(
+                xscale="log",
+                yscale="log",
+                xlabel="Initial orbital period, $P_i$ [days]",
+                ylabel="Initial primary mass, $M_{1, i}$ [M$_\odot$]",
+            )
+            plt.show()
 
-    .. figure:: ../../../_static/astronuc/mergers_from_initC.png
-        :align: center
-        :width: 80%
-        :alt: Initial orbital period vs initial primary mass, with mergers highlighted
+        .. figure:: ../../../_static/astronuc/mergers_from_initC.png
+            :align: center
+            :width: 80%
+            :alt: Initial orbital period vs initial primary mass, with mergers highlighted
 
-        Initial orbital period vs initial primary mass, with mergers highlighted.
+            Initial orbital period vs initial primary mass, with mergers highlighted.
 
 
 .. admonition:: Task 2.1.4
@@ -202,10 +202,10 @@ Initial conditions of mergers
 
     What trends do you notice in your plot? Which conditions seem to lead to mergers? Why?
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    Mergers are most common for short initial orbital periods, which makes sense since these binaries are more likely to interact and merge. Mergers are also more common for higher initial primary masses, which also makes sense since these stars are (a) larger and (b) more likely to evolve off the main sequence and expand further, leading to interactions and mergers.
+        Mergers are most common for short initial orbital periods, which makes sense since these binaries are more likely to interact and merge. Mergers are also more common for higher initial primary masses, which also makes sense since these stars are (a) larger and (b) more likely to evolve off the main sequence and expand further, leading to interactions and mergers.
 
 [Bonus] Final positions of compact objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,95 +217,95 @@ If you've still got time, let's try something else!
 
     First, make a plot of the final positions of the primary star from each binary in the population. Plot the Galactocentric radius (:math:`R = \sqrt{x^2 + y^2}`) on the x-axis and the absolute Galactocentric height (:math:`|z|`) on the y-axis. I recommend using a log-scale for both axes.
 
-.. dropdown:: Hint
-    :color: info
+    .. dropdown:: Hint
+        :color: info
 
-    The final positions are given by ``p.final_primary_pos``. This is a 2D array where the first dimension corresponds to the binary number and the second dimension corresponds to the x, y, and z coordinates.
+        The final positions are given by ``p.final_primary_pos``. This is a 2D array where the first dimension corresponds to the binary number and the second dimension corresponds to the x, y, and z coordinates.
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    .. code-block:: python
+        .. code-block:: python
 
-        R = np.sqrt(p.final_primary_pos[:, 0]**2 + p.final_primary_pos[:, 1]**2)
-        abs_z = np.abs(p.final_primary_pos[:, 2])
+            R = np.sqrt(p.final_primary_pos[:, 0]**2 + p.final_primary_pos[:, 1]**2)
+            abs_z = np.abs(p.final_primary_pos[:, 2])
 
-        fig, ax = plt.subplots()
-        ax.scatter(R, abs_z, s=1)
-        ax.set(
-            xscale="log",
-            yscale="log",
-            xlabel="Final primary Galactocentric $R$ [kpc]",
-            ylabel="Final primary Galactocentric $|z|$ [kpc]",
-        )
-        plt.show()
+            fig, ax = plt.subplots()
+            ax.scatter(R, abs_z, s=1)
+            ax.set(
+                xscale="log",
+                yscale="log",
+                xlabel="Final primary Galactocentric $R$ [kpc]",
+                ylabel="Final primary Galactocentric $|z|$ [kpc]",
+            )
+            plt.show()
 
-    .. figure:: ../../../_static/astronuc/primaries_final_positions.png
-        :align: center
-        :width: 80%
-        :alt: Final Galactocentric positions of the primary stars in the population
+        .. figure:: ../../../_static/astronuc/primaries_final_positions.png
+            :align: center
+            :width: 80%
+            :alt: Final Galactocentric positions of the primary stars in the population
 
-        Final Galactocentric positions of the primary stars in the population.
+            Final Galactocentric positions of the primary stars in the population.
 
 .. admonition:: Task 2.2.2
     :class: admonition-task
 
     Now, create a mask that selects only binaries where either star ends as a neutron star or black hole (i.e. that receive a natal kick).
 
-.. dropdown:: Hint
-    :color: info
+    .. dropdown:: Hint
+        :color: info
 
-    The final stellar type is given by the ``kstar_1`` and ``kstar_2`` columns in the ``final_bpp`` table. You can access this table with ``p.final_bpp``. Neutron stars are ``kstar == 13`` and black holes are ``kstar == 14``.
+        The final stellar type is given by the ``kstar_1`` and ``kstar_2`` columns in the ``final_bpp`` table. You can access this table with ``p.final_bpp``. Neutron stars are ``kstar == 13`` and black holes are ``kstar == 14``.
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    .. code-block:: python
+        .. code-block:: python
 
-        compact_object_mask = p.final_bpp["kstar_1"].isin([13, 14]) | p.final_bpp["kstar_2"].isin([13, 14])
+            compact_object_mask = p.final_bpp["kstar_1"].isin([13, 14]) | p.final_bpp["kstar_2"].isin([13, 14])
 
 .. admonition:: Task 2.2.3
     :class: admonition-task
 
     Now, update your plot to highlight the binaries where the primary star ends as a neutron star or black hole.
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    .. code-block:: python
+        .. code-block:: python
 
-        fig, ax = plt.subplots()
-        ax.scatter(R, abs_z, label="All primaries", s=1)
-        ax.scatter(
-            R[compact_object_mask],
-            abs_z[compact_object_mask],
-            s=5, edgecolor="darkblue", linewidth=3, facecolor="none", label="NS/BH"
-        )
-        ax.legend()
-        ax.set(
-            xlabel="Final primary Galactocentric $R$ [kpc]",
-            ylabel="Final primary Galactocentric $|z|$ [kpc]",
-        )
-        plt.show()
+            fig, ax = plt.subplots()
+            ax.scatter(R, abs_z, label="All primaries", s=1)
+            ax.scatter(
+                R[compact_object_mask],
+                abs_z[compact_object_mask],
+                s=5, edgecolor="darkblue", linewidth=3, facecolor="none", label="NS/BH"
+            )
+            ax.legend()
+            ax.set(
+                xlabel="Final primary Galactocentric $R$ [kpc]",
+                ylabel="Final primary Galactocentric $|z|$ [kpc]",
+            )
+            plt.show()
 
-    .. figure:: ../../../_static/astronuc/compact_objects_final_positions.png
-        :align: center
-        :width: 80%
-        :alt: Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted
+        .. figure:: ../../../_static/astronuc/compact_objects_final_positions.png
+            :align: center
+            :width: 80%
+            :alt: Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted
 
-        Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted.
+            Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted.
 
 .. admonition:: Task 2.2.4
     :class: admonition-task
 
     What trends do you notice in your plot? Do the compact objects seem to have different final positions than the rest of the population? Is that true for all of them? Why/why not?
 
-.. dropdown:: Click here to reveal the answer
-    :color: danger
+    .. dropdown:: Click here to reveal the answer
+        :color: danger
 
-    The compact objects should have a wider distribution in both R and z than the rest of the population, since they receive natal kicks that can send them to different locations in the galaxy. However, this is not true for all of them. Some compact objects will still end up on similar orbits if their receive small kicks (e.g. from full-fallback black hole formation).
+        The compact objects should have a wider distribution in both R and z than the rest of the population, since they receive natal kicks that can send them to different locations in the galaxy. However, this is not true for all of them. Some compact objects will still end up on similar orbits if their receive small kicks (e.g. from full-fallback black hole formation).
 
-    You could probably investigate this by colouring the points by neutron star and black hole separately if you're interested!
+        You could probably investigate this by colouring the points by neutron star and black hole separately if you're interested!
 
 
 And that's it for this part! In the next part, we'll see how we can use ``cogsworth`` to track the timing and location of supernovae in a galaxy. See you there!
