@@ -1,3 +1,5 @@
+.. _output:
+
 Understand your output
 ======================
 

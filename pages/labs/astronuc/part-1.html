@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/new_font.css?v=454821b3" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=54e4f58c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=f308b297" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -214,7 +214,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../astronuc-index.html">AstroNuc 2026</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Part 1: Creating your first population</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-2.html">Part 2: Identifying specific objects in the population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="part-3.html">Part 2: Inspect supernovae</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part-3.html">Part 3: Inspect supernovae</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-4.html">Part 4: Varying our assumptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-5.html">Part 5: Where are the NSNS mergers?</a></li>
 </ul>
@@ -452,7 +452,13 @@ document.write(`
 </pre></div>
 </div>
 <p>That should give you something like this:</p>
-<img alt="Cartoon binary evolution plot" class="align-center" src="../../../_images/cartoon_binary.png" />
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/cartoon_binary.png"><img alt="../../../_images/cartoon_binary.png" src="../../../_images/cartoon_binary.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Cartoon evolution of the most massive binary in the population.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>We can also look at the orbit of this binary through the galaxy. By default, the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.plot_orbit" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_orbit()</span></code></a> method plots the orbit from birth until present day, but you can also specify a custom time range.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the orbit of the most massive binary</span>
 <span class="n">p</span><span class="o">.</span><span class="n">plot_orbit</span><span class="p">(</span><span class="n">bin_num</span><span class="o">=</span><span class="n">most_massive</span><span class="p">)</span>
@@ -462,8 +468,20 @@ document.write(`
 </pre></div>
 </div>
 <p>And those plots might look something like this:</p>
-<img alt="Orbit of the most massive binary from birth until present day" class="align-center" src="../../../_images/orbit_full.png" />
-<img alt="Orbit of the most massive binary for the first 100 Myr of evolution" class="align-center" src="../../../_images/orbit_zoom.png" />
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../_images/orbit_full.png"><img alt="../../../_images/orbit_full.png" src="../../../_images/orbit_full.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Orbit of the most massive binary from birth until present day</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../../_images/orbit_zoom.png"><img alt="../../../_images/orbit_zoom.png" src="../../../_images/orbit_zoom.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Orbit of the most massive binary for the first 100 Myr of evolution</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <hr style="margin: 4rem 0;"></section>
 </section>
 <section id="tasks">
@@ -474,7 +492,7 @@ document.write(`
 <p>To start, initialise a population with 1000 binaries, then sampling the binaries, evolve them, and integrate their orbits.</p>
 <p>What are the properties of the first few binaries in the population?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to show the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a population with 1000 binaries</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">cogsworth</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span>
@@ -492,12 +510,12 @@ document.write(`
 <h3>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h3>
 <p>Now let’s make some plots. First, what does <strong>the distribution of galactic birth times</strong> look like for the binaries in the population?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">You can find the birth times of the binaries in the <code class="docutils literal notranslate"><span class="pre">initial_galaxy</span></code> attribute of the population. The birth times are stored in the <code class="docutils literal notranslate"><span class="pre">tau</span></code> attribute of the galaxy and are ‘’lookback times’’, meaning that a birth time of 0 corresponds to a binary that was born at the present day, while a birth time of 10 Gyr corresponds to a binary that was born 10 Gyr ago.</p>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to show the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">initial_galaxy</span><span class="o">.</span><span class="n">tau</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
@@ -525,12 +543,12 @@ document.write(`
 <label class="sd-tab-label" for="sd-tab-item-0">
 Most massive binary</label><div class="sd-tab-content docutils">
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">You can find the most massive binary by looking at the initial mass of the primary star in each binary and finding the index of the maximum value. Remember that each binary has a unique <code class="docutils literal notranslate"><span class="pre">bin_num</span></code> that you can use to track it across different tables and plots.</p>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to show the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the bin_num of the most massive binary</span>
 <span class="n">most_massive</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bin_nums</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">initial_binaries</span><span class="p">[</span><span class="s2">&quot;mass_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
@@ -546,13 +564,13 @@ Most massive binary</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" for="sd-tab-item-1">
 Neutron star</label><div class="sd-tab-content docutils">
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">You can find binaries that create neutron stars by looking at the <code class="docutils literal notranslate"><span class="pre">kstar_1</span></code> and <code class="docutils literal notranslate"><span class="pre">kstar_2</span></code> columns in the bpp table, which give the stellar type of each star at each timestep. A stellar type of 13 corresponds to a neutron star.</p>
 <p class="sd-card-text">Remember that the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.final_bpp" title="(in cogsworth)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">final_bpp</span></code></a> table shows the final state of the binaries at the present day.</p>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to show the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find binaries that create at least one neutron star</span>
 <span class="n">neutron_star_binaries</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">final_bpp</span><span class="p">[</span>
@@ -573,7 +591,7 @@ Neutron star</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" for="sd-tab-item-2">
 Random binary</label><div class="sd-tab-content docutils">
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to show the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pick a random binary</span>
 <span class="n">random_bin_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bin_nums</span><span class="p">)</span>

@@ -1,4 +1,4 @@
-Part 2: Inspect supernovae
+Part 3: Inspect supernovae
 --------------------------
 
 
