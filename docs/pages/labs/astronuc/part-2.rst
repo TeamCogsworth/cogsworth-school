@@ -136,6 +136,13 @@ First, make a plot of the initial orbital period vs the initial primary mass for
         )
         plt.show()
 
+    .. figure:: ../../../_static/astronuc/initial_porbs_masses.png
+        :align: center
+        :width: 80%
+        :alt: Initial orbital period vs initial primary mass for all binaries in the population
+
+        Initial orbital period vs initial primary mass for all binaries in the population.
+
 Now, create a mask that selects only binaries that will eventually merge (i.e. that end with a separation of exactly :math:`a = 0.0 {\rm R_\odot}`).
 
 .. dropdown:: Hint
@@ -173,6 +180,13 @@ Now, update your plot to highlight the binaries that will eventually merge (howe
         )
         plt.show()
 
+    .. figure:: ../../../_static/astronuc/mergers_from_initC.png
+        :align: center
+        :width: 80%
+        :alt: Initial orbital period vs initial primary mass, with mergers highlighted
+
+        Initial orbital period vs initial primary mass, with mergers highlighted.
+
 
 What trends do you notice in your plot? Which conditions seem to lead to mergers? Why?
 
@@ -209,6 +223,13 @@ If you've still got time, let's try something else! First, make a plot of the fi
         )
         plt.show()
 
+    .. figure:: ../../../_static/astronuc/primaries_final_positions.png
+        :align: center
+        :width: 80%
+        :alt: Final Galactocentric positions of the primary stars in the population
+
+        Final Galactocentric positions of the primary stars in the population.
+
 Now, create a mask that selects only binaries where either star ends as a neutron star or black hole (i.e. that receive a natal kick).
 
 .. dropdown:: Hint
@@ -243,6 +264,13 @@ Now, update your plot to highlight the binaries where the primary star ends as a
             ylabel="Final primary Galactocentric $|z|$ [kpc]",
         )
         plt.show()
+
+    .. figure:: ../../../_static/astronuc/compact_objects_final_positions.png
+        :align: center
+        :width: 80%
+        :alt: Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted
+
+        Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted.
 
 What trends do you notice in your plot? Do the compact objects seem to have different final positions than the rest of the population? Is that true for all of them? Why/why not?
 
