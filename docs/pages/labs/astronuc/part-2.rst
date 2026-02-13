@@ -6,6 +6,16 @@ Now that we know how to simulate populations of binaries, let's think about how 
 Demo
 ****
 
+Let's make a slightly larger population so that our plots look a little nicer.
+
+.. code-block:: python
+
+    p = cogsworth.pop.Population(
+        n_binaries=10000,
+        use_default_BSE_settings=True
+    )
+    p.create_population()
+
 Inspect initial conditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -14,7 +24,7 @@ We've also explored some of the output tables already, including the ``initial_b
 .. code-block:: python
 
     fig, ax = plt.subplots()
-    ax.scatter(p.initial_binaries["mass_1"], p.initial_binaries["mass_2"])
+    ax.scatter(p.initial_binaries["mass_1"], p.initial_binaries["mass_2"], s=1)
     ax.set(
         xscale="log",
         yscale="log",
@@ -74,7 +84,7 @@ Now, if we print out the initial mass ratios for this population, we'll see it m
 
     # range of mass ratios in this population
     q = new_pop.initial_binaries["mass_2"] / new_pop.initial_binaries["mass_1"]
-    print(q.min(), q.max())
+    print(q.max())
 
 Mask based on final state
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -161,7 +171,8 @@ Initial conditions of mergers
 
         .. code-block:: python
 
-            merge_mask = p.final_bpp["sep"] == 0.0
+            merger_nums = p.final_bpp["bin_num"][p.final_bpp["sep"] == 0]
+            merger_mask = np.isin(p.bin_nums, merger_nums)
 
 .. admonition:: Task 2.1.3
     :class: admonition-task

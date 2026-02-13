@@ -219,6 +219,12 @@ Distributions
             )
             plt.show()
 
+        .. figure:: ../../../_static/astronuc/formation_times.png
+            :align: center
+            :width: 80%
+
+            Distribution of galactic birth times for the binaries in the population.
+
 Your favourite binary
 ^^^^^^^^^^^^^^^^^^^^^
 

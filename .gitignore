@@ -147,3 +147,5 @@ solutions/*
 !solutions/*.so
 
 files/
+
+notebooks/solved

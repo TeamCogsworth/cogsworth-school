@@ -125,7 +125,7 @@ Let's take a look at the distribution of these galactic times!
     ax.hist(ce_t_gal.to(u.Gyr).value, bins="auto")
     ax.set(
         xlabel="Age of Milky Way [Gyr]",
-        ylabel="Number of common-envelope events",
+        ylabel="Number of CE events",
     )
     plt.show()
 
@@ -159,7 +159,7 @@ As we've seen before, each binary has an ``orbit`` associated with it, which tra
 
     # it stores the time and position at each timestep
     print(orbit_example.t)
-    print(orbit_example.pos)
+    print(orbit_example.pos.xyz)
 
 Did you notice that the orbit times end at 12 Gyr? The initial time of the orbit is actually the birth time of the binary in the galaxy, these orbit times are already based in the Galactic frame.
 
@@ -256,7 +256,7 @@ Now it's your turn to do the same for supernovae! The code from the demo above s
             import cogsworth
 
             p = cogsworth.pop.Population(
-                n_binaries=2000,
+                n_binaries=10_000,
                 use_default_BSE_settings=True,
                 final_kstar1=[13, 14],          # aim to sample systems that produce a NS/BH
                 final_kstar2=[13, 14],          # same for secondary star
