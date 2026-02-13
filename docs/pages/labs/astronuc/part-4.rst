@@ -193,6 +193,98 @@ Tasks
 
 You'll not have time to do all of these tasks in the lab, so just pick whichever one looks more interesting to you (and no one's stopping you doing the others later!).
 
+The overall goal of these tasks is to explore how varying different assumptions changes the properties of the supernovae in the population. You can pick what you're most interested in varying.
 
+.. tab-set::
+    
+    .. tab-item:: Vary an initial condition
 
+        .. admonition:: Task 4.1.1
+            :class: admonition-task
 
+            Choose an initial condition to vary! Your full range of options is given `here in the COSMIC docs <https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#sampling>`_.
+
+            Some inspiration for you:
+
+            - You could try one of the other built-in initial orbital period distributions?
+            - How does making the initial population entirely circular change things?
+            - What if you set the minimum mass ratio to a larger value like 0.5?
+
+        .. admonition:: Task 4.1.2
+            :class: admonition-task
+
+            Create a template population and then make two copies of it. For one copy, your "fiducial" simulation, just call ``fiducial.create_population()`` to create the population and then evolve it.
+            
+            For the other copy, change one of the sampling parameters like how we did above, and then re-run the sampling step and the evolution steps.
+            
+            Make a plot of the initial distribution that you changed for both populations to check that it changed in the way you expected.
+
+            .. dropdown:: Hint
+                :color: info
+
+                You can change the sampling parameters by updating ``YOURPOPULATION.sampling_params``. You can access the initial binaries with ``YOURPOPULATION.initial_binaries`` after you run the sampling step.
+
+        .. admonition:: Task 4.1.3
+            :class: admonition-task
+
+            Use your code from Part 3 to get the timing and location of all supernovae in both populations. How do the supernova properties change when you change the initial conditions?
+
+    .. tab-item:: Vary binary physics
+
+        .. admonition:: Task 4.2.1
+            :class: admonition-task
+
+            Choose a binary physics assumption to vary! Your full range of options is given `here in the COSMIC documentation <https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#binary-physics>`_.
+
+            Some inspiration for you:
+
+            - Perhaps you could make common-envelopes 10x more efficient (``alpha1 = 10``)?
+            - What if you make stable mass transfer always nonconservative (``acc_lim = 0``)?
+            - Or maybe change how angular momentum is lost during Roche-lobe overflow at super-Eddington mass transfer rates? (``gamma``)?
+
+        .. admonition:: Task 4.2.2
+            :class: admonition-task
+
+            Create a template population and then make two copies of it. For one copy, your "fiducial" simulation, just call ``fiducial.create_population()`` to create the population and then evolve it.
+            
+            For the other copy, change one of the binary physics parameters like how we did above, and then run just the stellar evolution and galactic evolution steps (be careful not to do the sampling or you'll get a different initial population!).
+            
+            Pick a random binary in both populations and plot a cartoon of its evolution in both cases. Does it change how you would expect?
+
+            .. dropdown:: Hint
+                :color: info
+
+                You can change the binary physics parameters by updating ``YOURPOPULATION.BSE_settings``. You can plot the cartoon of a binary's evolution with ``YOURPOPULATION.plot_cartoon(BINNUM)``.
+
+                Make sure you pick a random binary that experiences the binary interaction that you are trying to change! For example, if you're changing the common envelope efficiency, make sure to pick a binary that actually goes through a common envelope phase to see a difference.
+
+        .. admonition:: Task 4.2.3
+            :class: admonition-task
+
+            Use your code from Part 3 to get the timing and location of all supernovae in both populations. How do the supernova properties change when you change the binary physics assumptions?
+
+    .. tab-item:: Vary the galactic potential
+
+        .. admonition:: Task 4.3.1
+            :class: admonition-task
+
+            Try creating a different galactic potential and evolving your population through it! You can use any of the potentials implemented in `gala <https://gala.adrian.pw/en/latest/potential/index.html>`_, but I'd probably recommend an NFW potential or a Miyamoto-Nagai potential for this task, with masses similar to the Milky Way.
+
+        .. admonition:: Task 4.3.2
+            :class: admonition-task
+
+            Create a template population and then make two copies of it. For one copy, your "fiducial" simulation, just call ``fiducial.create_population()`` to create the population and then evolve it.
+            
+            For the other copy, update the potential like how we did above, and then run just the galactic evolution steps (be careful not to do the sampling or stellar evolution or you'll get a different initial population!).
+            
+            Pick a random binary in both populations and plot its galactic orbit. Does it change how you would expect?
+
+            .. dropdown:: Hint
+                :color: info
+
+                You can change the galactic potential by updating ``YOURPOPULATION.galactic_potential``. You can plot the orbit of a binary with ``YOURPOPULATION.plot_orbit(BINNUM)``.
+
+        .. admonition:: Task 4.3.3
+            :class: admonition-task
+
+            Use your code from Part 3 to get the timing and location of all supernovae in both populations. How do the supernova properties change when you change the galactic potential?
