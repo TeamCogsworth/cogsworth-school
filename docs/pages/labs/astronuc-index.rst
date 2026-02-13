@@ -3,6 +3,17 @@
 AstroNuc 2026
 =============
 
+Jupyter Notebook
+----------------
+
+The Jupyter notebook with all of the code for this lab is available `on GitHub <https://github.com/TeamCogsworth/cogsworth-school/blob/main/notebooks/astronuc.ipynb>`_.
+You could also clone the whole repository of lab materials to get everything (including these documentation pages) locally by running
+
+.. code-block:: bash
+
+    git clone https://github.com/TeamCogsworth/cogsworth-school.git
+
+
 Slides
 ------
 
