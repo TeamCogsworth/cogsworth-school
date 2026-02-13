@@ -440,7 +440,7 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ce_t_gal</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age of Milky Way [Gyr]&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of common-envelope events&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of CE events&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -471,7 +471,7 @@ document.write(`
 
 <span class="c1"># it stores the time and position at each timestep</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">orbit_example</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">orbit_example</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orbit_example</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">xyz</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Did you notice that the orbit times end at 12 Gyr? The initial time of the orbit is actually the birth time of the binary in the galaxy, these orbit times are already based in the Galactic frame.</p>
@@ -555,7 +555,7 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cogsworth</span>
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">cogsworth</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span>
-    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span>
     <span class="n">use_default_BSE_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">final_kstar1</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>          <span class="c1"># aim to sample systems that produce a NS/BH</span>
     <span class="n">final_kstar2</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>          <span class="c1"># same for secondary star</span>

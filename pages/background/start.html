@@ -319,7 +319,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cogsworth">Install <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-lab-materials">Download the lab materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-your-installation">Test your installation</a></li>
 </ul>
             </nav>
         </div>
@@ -339,14 +339,17 @@ document.write(`
 <p>You can follow the instructions in the <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> documentation to install the code on your machine. If you have any issues, please don’t hesitate to ask for help!</p>
 <p class="sd-text-center"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm reference external" href="https://cogsworth.readthedocs.io/en/latest/installation.html"><span>Go to installation instructions</span></a></p>
 </section>
-<section id="download-the-lab-materials">
-<h2>Download the lab materials<a class="headerlink" href="#download-the-lab-materials" title="Link to this heading">#</a></h2>
-<p>Some of the parts of the lab would require you to run large simulations. We’ll avoid this by employing a “here’s one I made earlier” approach, where you can download the outputs of these simulations and use them to follow along with the lab. You can download these materials using the link below.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>TODO TODO TODO</p>
-<p>FINISH THIS</p>
+<section id="test-your-installation">
+<h2>Test your installation<a class="headerlink" href="#test-your-installation" title="Link to this heading">#</a></h2>
+<p>Once you’ve installed <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code>, you can test that everything is working by running the following code in a Python environment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cogsworth</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cogsworth</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>And you should see something like “v3.6.2” (or something more up-to-date).</p>
+<p>If this works then you’ll all set up. You can fully test your installation by running through the quickstart guide in the documentation, which will show you how to create a population and evolve it. This should give you a good preview for the sorts of things we’ll be doing in the labs.</p>
+<p class="sd-text-center"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm reference external" href="https://cogsworth.readthedocs.io/en/latest/pages/getting_started.html"><span>Go to quickstart guide</span></a></p>
 </section>
 </section>
 
@@ -396,7 +399,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cogsworth">Install <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-lab-materials">Download the lab materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-your-installation">Test your installation</a></li>
 </ul>
   </nav></div>
 
