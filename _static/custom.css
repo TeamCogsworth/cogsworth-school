@@ -10,6 +10,12 @@
     --pst-font-family-heading: var(--font-name)!important;
 }
 
+/* make dropdowns that are 'danger' in dark mode look better */
+html[data-theme="dark"] {
+    --pst-color-danger: #ea96a3!important;
+    --sd-color-danger-bg: #bd5360!important;
+}
+
 .navbar-brand img {
     max-width: min(100%, 150px);
 }
@@ -40,17 +46,28 @@ ul.navbar-icon-links {
     justify-content: center!important;
 }
 
-
+/* add a question admonition */
 div.admonition.admonition-question > .admonition-title::after {
-    /* fontawesome question in a circle */
     color: pink;
     content: "\f059";
 }
-
 div.admonition.admonition-question {
-  border-color: pink;
+    border-color: pink;
 }
 div.admonition.admonition-question > .admonition-title {
-  background-color: #db83a4;
-  color: white;
+    background-color: #db83a4;
+    color: white;
+}
+
+/* Add a "task" admonition */
+div.admonition.admonition-task > .admonition-title::after {
+    color: var(--pst-color-primary);
+    content: "\f0ae";
+}
+div.admonition.admonition-task {
+    border-color: var(--pst-color-primary);
+}
+div.admonition.admonition-task > .admonition-title {
+    background-color: var(--pst-color-primary);
+    color: white;
 }

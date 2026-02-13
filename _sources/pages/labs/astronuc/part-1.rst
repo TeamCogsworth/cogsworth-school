@@ -172,124 +172,133 @@ Now it's your turn! Try the following tasks to get familiar with creating and in
 Your own population
 ^^^^^^^^^^^^^^^^^^^
 
-To start, initialise a population with 1000 binaries, then sampling the binaries, evolve them, and integrate their orbits.
+.. admonition:: Task 1.1
+    :class: admonition-task
 
-What are the properties of the first few binaries in the population?
+    To start, initialise a population with 1000 binaries, then sampling the binaries, evolve them, and integrate their orbits.
 
-.. dropdown:: Click here to show the answer
-    :color: danger
+    What are the initial properties of the first few binaries in the population?
 
-    .. code-block:: python
+    .. dropdown:: Click here to show the answer
+        :color: danger
 
-        # create a population with 1000 binaries
-        p = cogsworth.pop.Population(
-            n_binaries=1000, use_default_BSE_settings=True
-        )
-        p.create_population()
+        .. code-block:: python
 
-        # look at the first few binaries
-        print(p.initial_binaries.head())
+            # create a population with 1000 binaries
+            p = cogsworth.pop.Population(
+                n_binaries=1000, use_default_BSE_settings=True
+            )
+            p.create_population()
+
+            # look at the first few binaries
+            print(p.initial_binaries.head())
 
 Distributions
 ^^^^^^^^^^^^^
 
-Now let's make some plots. First, what does **the distribution of galactic birth times** look like for the binaries in the population?
+.. admonition:: Task 1.2
+    :class: admonition-task
 
-.. dropdown:: Hint
-    :color: info
+    Now let's make some plots. First, what does **the distribution of galactic birth times** look like for the binaries in the population?
 
-    You can find the birth times of the binaries in the ``initial_galaxy`` attribute of the population. The birth times are stored in the ``tau`` attribute of the galaxy and are ''lookback times'', meaning that a birth time of 0 corresponds to a binary that was born at the present day, while a birth time of 10 Gyr corresponds to a binary that was born 10 Gyr ago.
+    .. dropdown:: Hint
+        :color: info
 
-.. dropdown:: Click here to show the answer
-    :color: danger
+        You can find the birth times of the binaries in the ``initial_galaxy`` attribute of the population. The birth times are stored in the ``tau`` attribute of the galaxy and are ''lookback times'', meaning that a birth time of 0 corresponds to a binary that was born at the present day, while a birth time of 10 Gyr corresponds to a binary that was born 10 Gyr ago.
 
-    .. code-block:: python
+    .. dropdown:: Click here to show the answer
+        :color: danger
 
-        fig, ax = plt.subplots()
-        ax.hist(p.initial_galaxy.tau.to(u.Gyr).value, bins="auto")
-        ax.set(
-            xlabel="Lookback time [Gyr]",
-            ylabel="Number of binaries",
-        )
-        plt.show()
+        .. code-block:: python
+
+            fig, ax = plt.subplots()
+            ax.hist(p.initial_galaxy.tau.to(u.Gyr).value, bins="auto")
+            ax.set(
+                xlabel="Lookback time [Gyr]",
+                ylabel="Number of binaries",
+            )
+            plt.show()
 
 Your favourite binary
 ^^^^^^^^^^^^^^^^^^^^^
 
-Now pick a binary of interest to you and inspect its evolution with a cartoon plot and look at its orbit through the galaxy.
+.. admonition:: Task 1.3
+    :class: admonition-task
 
-Some inspiration for picking a binary:
+    Now pick a binary of interest to you and inspect its evolution with a cartoon plot and look at its orbit through the galaxy.
 
-- The most massive binary in the population
-- A binary that ends by creating at least one neutron star
-- A random binary!
+    Some inspiration for picking a binary:
 
-Since this is a "choose your own adventure", use the tabs below for what you chose.
+    - The most massive binary in the population
+    - A binary that ends by creating at least one neutron star
+    - A random binary!
 
-.. tab-set::
+    Since this is a "choose your own adventure", use the tabs below for what you chose.
 
-    .. tab-item:: Most massive binary
+    .. tab-set::
 
-        .. dropdown:: Hint
-            :color: info
+        .. tab-item:: Most massive binary
 
-            You can find the most massive binary by looking at the initial mass of the primary star in each binary and finding the index of the maximum value. Remember that each binary has a unique ``bin_num`` that you can use to track it across different tables and plots.
+            .. dropdown:: Hint
+                :color: info
 
-        .. dropdown:: Click here to show the answer
-            :color: danger
+                You can find the most massive binary by looking at the initial mass of the primary star in each binary and finding the index of the maximum value. Remember that each binary has a unique ``bin_num`` that you can use to track it across different tables and plots.
 
-            .. code-block:: python
+            .. dropdown:: Click here to show the answer
+                :color: danger
 
-                # find the bin_num of the most massive binary
-                most_massive = p.bin_nums[p.initial_binaries["mass_1"].argmax()]
+                .. code-block:: python
 
-                # make some plots
-                p.plot_cartoon_binary(bin_num=most_massive)
-                p.plot_orbit(bin_num=most_massive)
+                    # find the bin_num of the most massive binary
+                    most_massive = p.bin_nums[p.initial_binaries["mass_1"].argmax()]
 
-    .. tab-item:: Neutron star
+                    # make some plots
+                    p.plot_cartoon_binary(bin_num=most_massive)
+                    p.plot_orbit(bin_num=most_massive)
 
-        .. dropdown:: Hint
-            :color: info
+        .. tab-item:: Neutron star
 
-            You can find binaries that create neutron stars by looking at the ``kstar_1`` and ``kstar_2`` columns in the bpp table, which give the stellar type of each star at each timestep. A stellar type of 13 corresponds to a neutron star.
+            .. dropdown:: Hint
+                :color: info
 
-            Remember that the :attr:`~cogsworth.pop.Population.final_bpp` table shows the final state of the binaries at the present day.
+                You can find binaries that create neutron stars by looking at the ``kstar_1`` and ``kstar_2`` columns in the bpp table, which give the stellar type of each star at each timestep. A stellar type of 13 corresponds to a neutron star.
 
-        .. dropdown:: Click here to show the answer
-            :color: danger
+                Remember that the :attr:`~cogsworth.pop.Population.final_bpp` table shows the final state of the binaries at the present day.
 
-            .. code-block:: python
+            .. dropdown:: Click here to show the answer
+                :color: danger
 
-                # find binaries that create at least one neutron star
-                neutron_star_binaries = p.final_bpp[
-                    (p.final_bpp["kstar_1"] == 13) | (p.final_bpp["kstar_2"] == 13)
-                ]
+                .. code-block:: python
 
-                # pick the first one and get its bin_num
-                ns_bin_num = neutron_star_binaries["bin_num"].iloc[0]
+                    # find binaries that create at least one neutron star
+                    neutron_star_binaries = p.final_bpp[
+                        (p.final_bpp["kstar_1"] == 13) | (p.final_bpp["kstar_2"] == 13)
+                    ]
 
-                # make some plots
-                p.plot_cartoon_binary(bin_num=ns_bin_num)
-                p.plot_orbit(bin_num=ns_bin_num)
+                    # pick the first one and get its bin_num
+                    ns_bin_num = neutron_star_binaries["bin_num"].iloc[0]
 
-    .. tab-item:: Random binary
-    
-        .. dropdown:: Click here to show the answer
-            :color: danger
+                    # make some plots
+                    p.plot_cartoon_binary(bin_num=ns_bin_num)
+                    p.plot_orbit(bin_num=ns_bin_num)
 
-            .. code-block:: python
+        .. tab-item:: Random binary
+        
+            .. dropdown:: Click here to show the answer
+                :color: danger
 
-                # pick a random binary
-                random_bin_num = np.random.choice(p.bin_nums)
+                .. code-block:: python
 
-                # make some plots
-                p.plot_cartoon_binary(bin_num=random_bin_num)
-                p.plot_orbit(bin_num=random_bin_num)
+                    # pick a random binary
+                    random_bin_num = np.random.choice(p.bin_nums)
 
-    .. tab-item:: Something else
+                    # make some plots
+                    p.plot_cartoon_binary(bin_num=random_bin_num)
+                    p.plot_orbit(bin_num=random_bin_num)
 
-        You'll have to ask Tom if you want a hint for this!
+        .. tab-item:: Something else
+
+            You'll have to ask Tom if you want a hint/answer for this!
 
 
 And now it's time to move on to Part 2, where we'll learn how to identify specific types of objects in the population and make some more plots!

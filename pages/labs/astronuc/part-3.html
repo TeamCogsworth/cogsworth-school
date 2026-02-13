@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Part 3: Inspect supernovae &#8212; cogsworth school</title>
+    <title>Part 3: Investigate the supernovae &#8212; cogsworth school</title>
   
   
   
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/new_font.css?v=454821b3" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=f308b297" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=f14441e9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -47,6 +47,8 @@
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"tex": {"tags": "ams", "useLabelIds": true}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pages/labs/astronuc/part-3';</script>
     <link rel="icon" href="../../../_static/cog.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -214,9 +216,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../astronuc-index.html">AstroNuc 2026</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="part-1.html">Part 1: Creating your first population</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-2.html">Part 2: Identifying specific objects in the population</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Part 3: Inspect supernovae</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Part 3: Investigate the supernovae</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-4.html">Part 4: Varying our assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="part-5.html">Part 5: Where are the NSNS mergers?</a></li>
 </ul>
 </details></li>
 </ul>
@@ -309,7 +310,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Part 3: Inspect supernovae</h1>
+    <h1>Part 3: Investigate the supernovae</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -319,7 +320,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-population-with-lots-of-massive-stars">Create a population with lots of massive stars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-common-envelope-events">Find the common-envelope events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-timing-on-galactic-timescales">Compute the timing on Galactic timescales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-the-common-envelope-events-in-the-galaxy">Locate the common-envelope events in the galaxy</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
 </ul>
             </nav>
@@ -332,13 +339,414 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="part-3-inspect-supernovae">
-<h1>Part 3: Inspect supernovae<a class="headerlink" href="#part-3-inspect-supernovae" title="Link to this heading">#</a></h1>
+  <section id="part-3-investigate-the-supernovae">
+<h1>Part 3: Investigate the supernovae<a class="headerlink" href="#part-3-investigate-the-supernovae" title="Link to this heading">#</a></h1>
+<p>Now that we can simulate Populations of binaries and identify specific subpopulations, it’s time to track down those supernovae! I’ll start with a demo of how to do this for common-envelope events and then you’ll get a chance to do the same for supernovae.</p>
 <section id="demo">
 <h2>Demo<a class="headerlink" href="#demo" title="Link to this heading">#</a></h2>
+<section id="create-a-population-with-lots-of-massive-stars">
+<h3>Create a population with lots of massive stars<a class="headerlink" href="#create-a-population-with-lots-of-massive-stars" title="Link to this heading">#</a></h3>
+<p>First things first, let’s make a slightly different population, which preferentially samples higher mass binaries. This will give us more common-envelopes and supernovae to work with.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Note that this population still stores the total mass in binaries and singles stars required to create this population (in the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.mass_binaries" title="(in cogsworth)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mass_binaries</span></code></a> and <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.mass_singles" title="(in cogsworth)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mass_singles</span></code></a> attributes). So you can renormalise without worrying that you’ve preferentially sampled from the IMF.</p>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cogsworth</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">cogsworth</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span>
+    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span>
+    <span class="n">use_default_BSE_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">final_kstar1</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>          <span class="c1"># aim to sample systems that produce a NS/BH</span>
+    <span class="n">final_kstar2</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>          <span class="c1"># same for secondary star</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">create_population</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="find-the-common-envelope-events">
+<h3>Find the common-envelope events<a class="headerlink" href="#find-the-common-envelope-events" title="Link to this heading">#</a></h3>
+<p>Our goal here is to find the times at which common-envelope events occur in our population. The table of interest in this case is the <code class="docutils literal notranslate"><span class="pre">bpp</span></code> table, which tracks the properties of each binary at every “important” time step in the simulation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <a class="reference internal" href="../../background/output.html#output"><span class="std std-ref">output documentation</span></a> has a detailed description of (a) what different <code class="docutils literal notranslate"><span class="pre">evol_type</span></code> and <code class="docutils literal notranslate"><span class="pre">kstar</span></code> values mean and (b) definitions of every column in the <code class="docutils literal notranslate"><span class="pre">bpp</span></code> table. I recommend keeping this documentation open as you work through this part of the lab.</p>
+</div>
+<p>Common-envelope events are indicated by an <code class="docutils literal notranslate"><span class="pre">evol_type</span></code> value of 7. Any row with this value corresponds to the start of a common-envelope event. Let’s find these rows!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the times at which a common-envelope event starts</span>
+<span class="n">ce_mask</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;evol_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">7</span>
+
+<span class="c1"># mask the rows in the Pandas DataFrame</span>
+<span class="n">ce_rows</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="n">ce_mask</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ce_rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now take a look at the distribution of times at which these events occur.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ce_rows</span><span class="p">[</span><span class="s2">&quot;tphys&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time in frame of binary [Myr]&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of common-envelope events&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/ce_times_binary.png"><img alt="Histogram of common-envelope event times in the frame of the binary" src="../../../_images/ce_times_binary.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Distribution of common-envelope event times in the frame of the binary.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It’s important to note here that these times are in the frame of the binary, so they don’t correspond to any particular time in the galaxy. We’ll see how to convert these to galactic times next.</p>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question for you</p>
+<p>What drives the timing of these common-envelope events?</p>
+<p>What would happen if you made a scatter plot of these times against the initial primary mass of the binary? Or the initial orbital period?</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">A common-envelope event occurs when a star overflows its Roche lobe in an unstable manner. So if we simplify a little, the timing is mainly driven by:</p>
+<ol class="loweralpha simple">
+<li><p class="sd-card-text">when the star evolves off the main sequence and expands</p></li>
+<li><p class="sd-card-text">how far apart the stars are</p></li>
+<li><p class="sd-card-text">how large the Roche lobe is (which depends on the mass ratio).</p></li>
+</ol>
+<p class="sd-card-text">It’s a little more complicated in practice, since the typically stability of mass transfer is different depending on the evolutionary stage of the star when it overflows its Roche lobe (case A, B, or C).</p>
+<p class="sd-card-text">But in general, we would expect common-envelope events to occur sooner for higher mass stars since those will expand sooner. We would also expect common-envelope events to be more common and to occur faster for shorter initial orbital periods.</p>
+</div>
+</details></div>
+</section>
+<section id="compute-the-timing-on-galactic-timescales">
+<h3>Compute the timing on Galactic timescales<a class="headerlink" href="#compute-the-timing-on-galactic-timescales" title="Link to this heading">#</a></h3>
+<p>Now let’s try converting these times to the galactic frame. Each binary was born at a specific time in the galaxy, which is given by the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.sfh.StarFormationHistory.html#cogsworth.sfh.StarFormationHistory.tau" title="(in cogsworth)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tau</span></code></a> attribute of the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.initial_galaxy" title="(in cogsworth)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">initial_galaxy</span></code></a> object. Remember that this is a “lookback time”, so the binary was born <span class="math notranslate nohighlight">\(\tau\)</span> Myr before the present day. So to convert the common-envelope event times to the galactic frame, we can do the following:</p>
+<div class="math notranslate nohighlight">
+\[t_{\rm gal} = t_{\rm present} - \tau + t_{\rm ce}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t_{\rm ce}\)</span> is the time of the common-envelope event in the binary frame and <span class="math notranslate nohighlight">\(t_{\rm present}\)</span> is the present day time in the galaxy (which is 12 Gyr by default, but is stored in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">max_ev_time</span></code> attribute).</p>
+<p>Let’s try computing the times of the common-envelope events in the galactic frame!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the bin_nums of the common-envelope events</span>
+<span class="n">ce_bin_nums</span> <span class="o">=</span> <span class="n">ce_rows</span><span class="p">[</span><span class="s2">&quot;bin_num&quot;</span><span class="p">]</span>
+
+<span class="c1"># get the indices of these bin_nums in the p.bin_nums array</span>
+<span class="n">ce_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bin_nums</span><span class="p">,</span> <span class="n">ce_bin_nums</span><span class="p">)</span>
+
+<span class="c1"># use these indices to get tau</span>
+<span class="n">ce_tau</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">initial_galaxy</span><span class="o">.</span><span class="n">tau</span><span class="p">[</span><span class="n">ce_indices</span><span class="p">]</span>
+
+<span class="c1"># compute the galactic times</span>
+<span class="n">ce_t_gal</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max_ev_time</span> <span class="o">-</span> <span class="n">ce_tau</span> <span class="o">+</span> <span class="n">ce_rows</span><span class="p">[</span><span class="s2">&quot;tphys&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span>
+</pre></div>
+</div>
+<p>Let’s take a look at the distribution of these galactic times!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ce_t_gal</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age of Milky Way [Gyr]&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of common-envelope events&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../_images/ce_times_galaxy.png"><img alt="Histogram of common-envelope event times in the frame of the galaxy" src="../../../_images/ce_times_galaxy.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Distribution of common-envelope event times in the frame of the galaxy.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question for you</p>
+<p>What drives the distribution of timing of these common-envelope events on Galactic timescale?</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The timing in the frame of the binary is relatively short on the scale of the galaxy (most occur within 100 Myr, see earlier plot). So the main driver of the distribution on galactic timescales is the star formation history of the galaxy. In this case, we have a Milky Way-like SFH, which means that most stars (and therefore most common-envelope events) occur early on in the galaxy’s history, which is why we see a peak at early times in the histogram.</p>
+</div>
+</details></div>
+</section>
+<section id="locate-the-common-envelope-events-in-the-galaxy">
+<h3>Locate the common-envelope events in the galaxy<a class="headerlink" href="#locate-the-common-envelope-events-in-the-galaxy" title="Link to this heading">#</a></h3>
+<p>As we’ve seen before, each binary has an <code class="docutils literal notranslate"><span class="pre">orbit</span></code> associated with it, which tracks its trajectory through the galaxy. Let’s take a look at one of these objects to get a sense of what a <code class="docutils literal notranslate"><span class="pre">gala</span></code> <a class="reference external" href="https://gala.adrian.pw/en/latest/api/gala.dynamics.Orbit.html#gala.dynamics.Orbit" title="(in gala v1.11.1.dev32)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orbit</span></code></a> object looks like.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s take the first orbit</span>
+<span class="n">orbit_example</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">orbits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orbit_example</span><span class="p">)</span>
+
+<span class="c1"># it stores the time and position at each timestep</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orbit_example</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orbit_example</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Did you notice that the orbit times end at 12 Gyr? The initial time of the orbit is actually the birth time of the binary in the galaxy, these orbit times are already based in the Galactic frame.</p>
+<p>So we need to:</p>
+<ul class="simple">
+<li><p>Go through each of the common-envelope events</p></li>
+<li><p>Find the corresponding orbit</p></li>
+<li><p>Compute the last timestep just before the common-envelope</p></li>
+<li><p>Get the position of the binary at this time</p></li>
+</ul>
+<p>Let’s do it!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ce_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ce_rows</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kpc</span>
+
+<span class="c1"># go through each of the common-envelope events</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ce_indices</span><span class="p">)):</span>
+    <span class="c1"># find the corresponding orbit</span>
+    <span class="n">ce_orbit</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">orbits</span><span class="p">[</span><span class="n">ce_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+    <span class="c1"># compute the last timestep where orbit.t is less than ce_t_gal[i]</span>
+    <span class="n">closest_time_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ce_orbit</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">ce_t_gal</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># get the position of the binary at this time</span>
+    <span class="n">ce_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ce_orbit</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">xyz</span><span class="p">[:,</span> <span class="n">closest_time_index</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And now we can plot the positions of these common-envelope events in the galaxy!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;height_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+
+<span class="n">XMAX</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ZMAX</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">ce_positions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">ce_positions</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">ce_t_gal</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">12</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$z$ [kpc]&quot;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">),</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">ZMAX</span><span class="p">,</span> <span class="n">ZMAX</span><span class="p">),</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">ce_positions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">ce_positions</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">ce_t_gal</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">12</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Galactocentric $x$ [kpc]&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Galactocentric $y$ [kpc]&quot;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">),</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">),</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Age of Milky Way at CE [Gyr]&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../../_images/ce_positions.png"><img alt="Positions of common-envelope events in the galaxy" src="../../../_images/ce_positions.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Positions of common-envelope events in the galaxy. The colour indicates the age of the Milky Way at which the common-envelope event occurs.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <hr style="margin: 4rem 0;"></section>
+</section>
 <section id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h2>
+<p>Now it’s your turn to do the same for supernovae! The code from the demo above should be helpful for this :)</p>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 3.1</p>
+<p>Create a population like the one above (~10000 binaries, that preferentially samples higher mass binaries). Write a mask for the <code class="docutils literal notranslate"><span class="pre">bpp</span></code> table that selects only the rows corresponding to supernova events. Note that supernovae are labelled as either <code class="docutils literal notranslate"><span class="pre">evol_type</span> <span class="pre">==</span> <span class="pre">15</span></code> (primary star supernova) or <code class="docutils literal notranslate"><span class="pre">evol_type</span> <span class="pre">==</span> <span class="pre">16</span></code> (secondary star supernova).</p>
+<p>It will be useful to know whether a supernova corresponds to the primary or secondary star, so create two separate masks for these.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cogsworth</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">cogsworth</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span>
+    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">use_default_BSE_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">final_kstar1</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>          <span class="c1"># aim to sample systems that produce a NS/BH</span>
+    <span class="n">final_kstar2</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>          <span class="c1"># same for secondary star</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">create_population</span><span class="p">()</span>
+
+<span class="n">primary_sn</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;evol_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">15</span>
+<span class="n">secondary_sn</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;evol_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">16</span>
+<span class="n">sn_mask</span> <span class="o">=</span> <span class="n">primary_sn</span> <span class="o">|</span> <span class="n">secondary_sn</span>
+</pre></div>
+</div>
+</div>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 3.2</p>
+<p>Now make a histogram that shows the distribution of supernova times in the frame of the binary. Ensure to create separate histograms for primary and secondary supernovae.</p>
+<p>Use the same bins for both histograms and set <code class="docutils literal notranslate"><span class="pre">density=True</span></code> in both calls to <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> so that you can compare the shapes of the distributions and not just the number of supernovae.</p>
+<p>What do you notice about the timing of primary vs. secondary supernovae? Are they the same? Why/why not?</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Try constructing the bins before you call <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code>. You can use <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code> to create an array of bin edges that go from 0 to 200 Myr (since most supernovae occur within this time frame) and have, say, 40 bins.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;tphys&quot;</span><span class="p">][</span><span class="n">primary_sn</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Primary SN&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;tphys&quot;</span><span class="p">][</span><span class="n">secondary_sn</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Secondary SN&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time in frame of binary, $t_b$ [Myr]&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;${\rm}dN/{\rm d}t_b$&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../../_images/sn_times_binary.png"><img alt="Histogram of supernova times in the frame of the binary" src="../../../_images/sn_times_binary.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Distribution of supernova times in the frame of the binary, with primary and secondary supernovae shown separately.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p class="sd-card-text">The timing of primary and secondary supernovae is slightly different. Primary supernovae typically occur earlier than secondary supernovae. This is because the primary star is initially more massive and therefore evolves faster, so it reaches the end of its life and explodes as a supernova before the secondary star does. The secondary star may also be affected by mass transfer from the primary, which can alter its evolution and delay its supernova explosion.</p>
+</div>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 3.3</p>
+<p>Now compute the timing of these supernovae in the galactic frame and make a histogram of these galactic times. Do primary and secondary supernovae have different distributions on galactic timescales? Why/why not?</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Remember that you can convert the supernova times to the galactic frame using the same method as for the common-envelope events. You will need to get the <code class="docutils literal notranslate"><span class="pre">bin_num</span></code> of each supernova event, find the corresponding index in the <code class="docutils literal notranslate"><span class="pre">p.bin_nums</span></code> array, and then use this index to get the birth time of the binary from <code class="docutils literal notranslate"><span class="pre">p.initial_galaxy.tau</span></code>.</p>
+<p class="sd-card-text">The conversion is given by:</p>
+<div class="math notranslate nohighlight">
+\[t_{\rm gal} = t_{\rm present} - \tau + t_{\rm sn}\]</div>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(t_{\rm sn}\)</span> is the time of the supernova in the binary frame and <span class="math notranslate nohighlight">\(t_{\rm present}\)</span> is the present day time in the galaxy (which is 12 Gyr by default, but is stored in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">max_ev_time</span></code> attribute).</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the bin_nums of the supernova events</span>
+<span class="n">primary_sn_bin_nums</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;bin_num&quot;</span><span class="p">][</span><span class="n">primary_sn</span><span class="p">]</span>
+<span class="n">secondary_sn_bin_nums</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;bin_num&quot;</span><span class="p">][</span><span class="n">secondary_sn</span><span class="p">]</span>
+
+<span class="c1"># get the indices of these bin_nums in the p.bin_nums array</span>
+<span class="n">primary_sn_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bin_nums</span><span class="p">,</span> <span class="n">primary_sn_bin_nums</span><span class="p">)</span>
+<span class="n">secondary_sn_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bin_nums</span><span class="p">,</span> <span class="n">secondary_sn_bin_nums</span><span class="p">)</span>
+
+<span class="c1"># use these indices to get tau</span>
+<span class="n">primary_sn_tau</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">initial_galaxy</span><span class="o">.</span><span class="n">tau</span><span class="p">[</span><span class="n">primary_sn_indices</span><span class="p">]</span>
+<span class="n">secondary_sn_tau</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">initial_galaxy</span><span class="o">.</span><span class="n">tau</span><span class="p">[</span><span class="n">secondary_sn_indices</span><span class="p">]</span>
+
+<span class="c1"># compute the galactic times</span>
+<span class="n">primary_sn_t_gal</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max_ev_time</span> <span class="o">-</span> <span class="n">primary_sn_tau</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;tphys&quot;</span><span class="p">][</span><span class="n">primary_sn</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span>
+<span class="n">secondary_sn_t_gal</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max_ev_time</span> <span class="o">-</span> <span class="n">secondary_sn_tau</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;tphys&quot;</span><span class="p">][</span><span class="n">secondary_sn</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">primary_sn_t_gal</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Primary SN&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">secondary_sn_t_gal</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Secondary SN&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age of Milky Way at SN, $t_{</span><span class="se">\r</span><span class="s2">m gal}$ [Gyr]&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;${\rm}dN/{\rm}dt_{\rm gal}$&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../_images/sn_times_galaxy.png"><img alt="Histogram of supernova times in the frame of the galaxy" src="../../../_images/sn_times_galaxy.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Distribution of supernova times in the frame of the galaxy, with primary and secondary supernovae shown separately.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p class="sd-card-text">The distributions of primary and secondary supernovae on galactic timescales are quite similar. Most of the supernovae (both primary and secondary) occur on short times in the context of the galaxy, so the main driver of the distribution on galactic timescales is the star formation history of the galaxy.</p>
+</div>
+</details></div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>One difference from above is that you may now have a situation where a binary has disrupted due to the supernova kick, so the secondary may be on a different orbit. <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> handles this and you can use <code class="docutils literal notranslate"><span class="pre">p.primary_orbits</span></code> and <code class="docutils literal notranslate"><span class="pre">p.secondary_orbits</span></code> to get the orbits of the primary and secondary stars, respectively, at every time step. So make sure to use the correct one for each supernova!</p>
+</aside>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 3.4</p>
+<p>Last but not least, let’s find the positions of these supernovae in the galaxy!</p>
+<p>Follow the same method as above to find the positions of these supernovae in the galaxy and make a plot of these positions like the one above (both types together, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> limits of 30 kpc and <span class="math notranslate nohighlight">\(z\)</span> limits of 7.5 kpc should work well for this).</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">You can use the same method as above, just doing it twice, once for the primaries (using you primary SN mask and <code class="docutils literal notranslate"><span class="pre">p.primary_orbits</span></code>) and once for the secondaries (using your secondary SN mask and <code class="docutils literal notranslate"><span class="pre">p.secondary_orbits</span></code>).</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">primary_sn_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">primary_sn</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kpc</span>
+<span class="n">secondary_sn_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">secondary_sn</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kpc</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">primary_sn_indices</span><span class="p">)):</span>
+    <span class="c1"># find the corresponding orbit</span>
+    <span class="n">primary_sn_orbit</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">primary_orbits</span><span class="p">[</span><span class="n">primary_sn_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+    <span class="c1"># compute the last timestep where orbit.t is less than primary_sn_t_gal[i]</span>
+    <span class="n">closest_time_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">primary_sn_orbit</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">primary_sn_t_gal</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># get the position of the binary at this time</span>
+    <span class="n">primary_sn_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">primary_sn_orbit</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">xyz</span><span class="p">[:,</span> <span class="n">closest_time_index</span><span class="p">]</span>
+
+<span class="c1"># same for secondaries</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">secondary_sn_indices</span><span class="p">)):</span>
+    <span class="n">secondary_sn_orbit</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">secondary_orbits</span><span class="p">[</span><span class="n">secondary_sn_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">closest_time_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">secondary_sn_orbit</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">secondary_sn_t_gal</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">secondary_sn_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">secondary_sn_orbit</span><span class="o">.</span><span class="n">pos</span><span class="o">.</span><span class="n">xyz</span><span class="p">[:,</span> <span class="n">closest_time_index</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;height_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+<span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="n">times</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">primary_sn_positions</span><span class="p">,</span> <span class="n">secondary_sn_positions</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">primary_sn_t_gal</span><span class="p">,</span> <span class="n">secondary_sn_t_gal</span><span class="p">],</span>
+<span class="p">):</span>
+
+    <span class="n">XMAX</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">ZMAX</span> <span class="o">=</span> <span class="mf">7.5</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">times</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">12</span>
+    <span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">times</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Gyr</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">12</span>
+    <span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$z$ [kpc]&quot;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">),</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">ZMAX</span><span class="p">,</span> <span class="n">ZMAX</span><span class="p">),</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Galactocentric $x$ [kpc]&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Galactocentric $y$ [kpc]&quot;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">),</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">),</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Age of Milky Way at SN [Gyr]&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../../../_images/sn_positions.png"><img alt="Positions of supernovae in the galaxy" src="../../../_images/sn_positions.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Positions of supernovae in the galaxy. The colour indicates the age of the Milky Way at which the supernova occurs.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</details></div>
 </section>
 </section>
 
@@ -387,7 +795,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-population-with-lots-of-massive-stars">Create a population with lots of massive stars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-common-envelope-events">Find the common-envelope events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-timing-on-galactic-timescales">Compute the timing on Galactic timescales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-the-common-envelope-events-in-the-galaxy">Locate the common-envelope events in the galaxy</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
 </ul>
   </nav></div>

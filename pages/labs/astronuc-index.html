@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/new_font.css?v=454821b3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=f308b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=f14441e9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -47,8 +47,6 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>window.MathJax = {"tex": {"tags": "ams", "useLabelIds": true}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pages/labs/astronuc-index';</script>
     <link rel="icon" href="../../_static/cog.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,9 +214,8 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">AstroNuc 2026</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="astronuc/part-1.html">Part 1: Creating your first population</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astronuc/part-2.html">Part 2: Identifying specific objects in the population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html">Part 3: Inspect supernovae</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html">Part 3: Investigate the supernovae</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html">Part 4: Varying our assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-5.html">Part 5: Where are the NSNS mergers?</a></li>
 </ul>
 </details></li>
 </ul>
@@ -345,7 +342,7 @@ I’d recommend opening the slides in a separate tab or window so that you can r
 <hr style="margin: 4rem 0;"></section>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>Welcome to this lab everyone, I hope you’ve had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track the timing and location of supernovae and binary neutron star mergers in a variety of galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution and as sources of <span class="math notranslate nohighlight">\(r\)</span>-process enrichment.</p>
+<p>Welcome to this lab everyone, I hope you’ve had an excellent week at AstroNuc 2026! My goal with this lab is to show you how to use <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track the timing and location of supernovae in galaxies. As you likely know even better than me, the location and timing of these events is crucial for galactic chemical evolution.</p>
 <p>We’re going to incrementally develop a suite of simulations that uses <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track these events and see how they are sensitive to different aspects of binary evolution and galactic dynamics.</p>
 </section>
 <section id="learning-goals">
@@ -363,7 +360,7 @@ I’d recommend opening the slides in a separate tab or window so that you can r
 <li><dl class="simple">
 <dt><strong>Be able to</strong></dt><dd><ul>
 <li><p>create your own simulations using <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code></p></li>
-<li><p>track the timing and location of supernovae and binary neutron star mergers in galaxies</p></li>
+<li><p>track the timing and location of supernovae in galaxies</p></li>
 </ul>
 </dd>
 </dl>
@@ -412,19 +409,25 @@ I’d recommend opening the slides in a separate tab or window so that you can r
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="astronuc/part-3.html">Part 3: Inspect supernovae</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html#demo">Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="astronuc/part-3.html">Part 3: Investigate the supernovae</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html#demo">Demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-3.html#create-a-population-with-lots-of-massive-stars">Create a population with lots of massive stars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-3.html#find-the-common-envelope-events">Find the common-envelope events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-3.html#compute-the-timing-on-galactic-timescales">Compute the timing on Galactic timescales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-3.html#locate-the-common-envelope-events-in-the-galaxy">Locate the common-envelope events in the galaxy</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="astronuc/part-3.html#tasks">Tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="astronuc/part-4.html">Part 4: Varying our assumptions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html#demo">Demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html#tasks">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html#demo">Demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-4.html#initial-population-distributions">Initial population distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-4.html#binary-physics-settings">Binary physics settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astronuc/part-4.html#galactic-potential">Galactic potential</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="astronuc/part-5.html">Part 5: Where are the NSNS mergers?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-5.html#demo">Demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astronuc/part-5.html#tasks">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astronuc/part-4.html#tasks">Tasks</a></li>
 </ul>
 </li>
 </ul>

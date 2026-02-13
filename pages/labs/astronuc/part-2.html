@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/new_font.css?v=454821b3" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=f308b297" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=f14441e9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -53,7 +53,7 @@
     <link rel="icon" href="../../../_static/cog.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Part 3: Inspect supernovae" href="part-3.html" />
+    <link rel="next" title="Part 3: Investigate the supernovae" href="part-3.html" />
     <link rel="prev" title="Part 1: Creating your first population" href="part-1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -216,9 +216,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../astronuc-index.html">AstroNuc 2026</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="part-1.html">Part 1: Creating your first population</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Part 2: Identifying specific objects in the population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="part-3.html">Part 3: Inspect supernovae</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part-3.html">Part 3: Investigate the supernovae</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-4.html">Part 4: Varying our assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="part-5.html">Part 5: Where are the NSNS mergers?</a></li>
 </ul>
 </details></li>
 </ul>
@@ -432,6 +431,8 @@ document.write(`
 <p class="sidebar-title"></p>
 <p>I’d recommend a log-scale for both the mass and orbital period!</p>
 </aside>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.1.1</p>
 <p>First, make a plot of the initial orbital period vs the initial primary mass for all binaries in the population.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
@@ -452,8 +453,18 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../_images/initial_porbs_masses.png"><img alt="Initial orbital period vs initial primary mass for all binaries in the population" src="../../../_images/initial_porbs_masses.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Initial orbital period vs initial primary mass for all binaries in the population.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
-</details><p>Now, create a mask that selects only binaries that will eventually merge (i.e. that end with a separation of exactly <span class="math notranslate nohighlight">\(a = 0.0 {\rm R_\odot}\)</span>).</p>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.1.2</p>
+<p>Now, create a mask that selects only binaries that will eventually merge (i.e. that end with a separation of exactly <span class="math notranslate nohighlight">\(a = 0.0 {\rm R_\odot}\)</span>).</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -466,7 +477,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details><p>Now, update your plot to highlight the binaries that will eventually merge (however you like, outline the merger points, or just overplot them in a different color, etc).</p>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.1.3</p>
+<p>Now, update your plot to highlight the binaries that will eventually merge (however you like, outline the merger points, or just overplot them in a different color, etc).</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -487,17 +501,31 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../../_images/mergers_from_initC.png"><img alt="Initial orbital period vs initial primary mass, with mergers highlighted" src="../../../_images/mergers_from_initC.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Initial orbital period vs initial primary mass, with mergers highlighted.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
-</details><p>What trends do you notice in your plot? Which conditions seem to lead to mergers? Why?</p>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.1.4</p>
+<p>What trends do you notice in your plot? Which conditions seem to lead to mergers? Why?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Mergers are most common for short initial orbital periods, which makes sense since these binaries are more likely to interact and merge. Mergers are also more common for higher initial primary masses, which also makes sense since these stars are (a) larger and (b) more likely to evolve off the main sequence and expand further, leading to interactions and mergers.</p>
 </div>
-</details></section>
+</details></div>
+</section>
 <section id="bonus-final-positions-of-compact-objects">
 <h3>[Bonus] Final positions of compact objects<a class="headerlink" href="#bonus-final-positions-of-compact-objects" title="Link to this heading">#</a></h3>
-<p>If you’ve still got time, let’s try something else! First, make a plot of the final positions of the primary star from each binary in the population. Plot the Galactocentric radius (<span class="math notranslate nohighlight">\(R = \sqrt{x^2 + y^2}\)</span>) on the x-axis and the absolute Galactocentric height (<span class="math notranslate nohighlight">\(|z|\)</span>) on the y-axis. I recommend using a log-scale for both axes.</p>
+<p>If you’ve still got time, let’s try something else!</p>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.2.1</p>
+<p>First, make a plot of the final positions of the primary star from each binary in the population. Plot the Galactocentric radius (<span class="math notranslate nohighlight">\(R = \sqrt{x^2 + y^2}\)</span>) on the x-axis and the absolute Galactocentric height (<span class="math notranslate nohighlight">\(|z|\)</span>) on the y-axis. I recommend using a log-scale for both axes.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -520,8 +548,18 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../../_images/primaries_final_positions.png"><img alt="Final Galactocentric positions of the primary stars in the population" src="../../../_images/primaries_final_positions.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Final Galactocentric positions of the primary stars in the population.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
-</details><p>Now, create a mask that selects only binaries where either star ends as a neutron star or black hole (i.e. that receive a natal kick).</p>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.2.2</p>
+<p>Now, create a mask that selects only binaries where either star ends as a neutron star or black hole (i.e. that receive a natal kick).</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -534,7 +572,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details><p>Now, update your plot to highlight the binaries where the primary star ends as a neutron star or black hole.</p>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.2.3</p>
+<p>Now, update your plot to highlight the binaries where the primary star ends as a neutron star or black hole.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -553,15 +594,26 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../_images/compact_objects_final_positions.png"><img alt="Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted" src="../../../_images/compact_objects_final_positions.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Final Galactocentric positions of the primary stars in the population, with neutron stars and black holes highlighted.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
-</details><p>What trends do you notice in your plot? Do the compact objects seem to have different final positions than the rest of the population? Is that true for all of them? Why/why not?</p>
+</details></div>
+<div class="admonition-task admonition">
+<p class="admonition-title">Task 2.2.4</p>
+<p>What trends do you notice in your plot? Do the compact objects seem to have different final positions than the rest of the population? Is that true for all of them? Why/why not?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
 <span class="sd-summary-text">Click here to reveal the answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">The compact objects should have a wider distribution in both R and z than the rest of the population, since they receive natal kicks that can send them to different locations in the galaxy. However, this is not true for all of them. Some compact objects will still end up on similar orbits if their receive small kicks (e.g. from full-fallback black hole formation).</p>
 <p class="sd-card-text">You could probably investigate this by colouring the points by neutron star and black hole separately if you’re interested!</p>
 </div>
-</details><p>And that’s it for this part! In the next part, we’ll see how we can use <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track the timing and location of supernovae in a galaxy. See you there!</p>
+</details></div>
+<p>And that’s it for this part! In the next part, we’ll see how we can use <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> to track the timing and location of supernovae in a galaxy. See you there!</p>
 </section>
 </section>
 </section>
@@ -591,7 +643,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Part 3: Inspect supernovae</p>
+        <p class="prev-next-title">Part 3: Investigate the supernovae</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
