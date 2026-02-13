@@ -15,11 +15,24 @@ You can follow the instructions in the ``cogsworth`` documentation to install th
 
     Go to installation instructions
 
-Download the lab materials
---------------------------
+Test your installation
+----------------------
 
-Some of the parts of the lab would require you to run large simulations. We'll avoid this by employing a "here's one I made earlier" approach, where you can download the outputs of these simulations and use them to follow along with the lab. You can download these materials using the link below.
+Once you've installed ``cogsworth``, you can test that everything is working by running the following code in a Python environment
 
-.. warning:: TODO TODO TODO
+.. code-block:: python
 
-    FINISH THIS
+    import cogsworth
+
+    print(cogsworth.__version__)
+
+And you should see something like "v3.6.2" (or something more up-to-date).
+
+If this works then you'll all set up. You can fully test your installation by running through the quickstart guide in the documentation, which will show you how to create a population and evolve it. This should give you a good preview for the sorts of things we'll be doing in the labs.
+
+.. button-link:: https://cogsworth.readthedocs.io/en/latest/pages/getting_started.html
+    :color: primary
+    :shadow:
+    :align: center
+
+    Go to quickstart guide
