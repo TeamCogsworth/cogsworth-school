@@ -1,5 +1,5 @@
-Part 3: Inspect supernovae
---------------------------
+Part 3: Investigate the supernovae
+----------------------------------
 
 Now that we can simulate Populations of binaries and identify specific subpopulations, it's time to track down those supernovae! I'll start with a demo of how to do this for common-envelope events and then you'll get a chance to do the same for supernovae.
 
