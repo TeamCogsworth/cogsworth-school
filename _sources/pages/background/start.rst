@@ -36,3 +36,12 @@ If this works then you'll all set up. You can fully test your installation by ru
     :align: center
 
     Go to quickstart guide
+
+Download the lab materials
+--------------------------
+
+You can clone the whole repository of lab materials to get everything locally by running
+
+.. code-block:: bash
+
+    git clone https://github.com/TeamCogsworth/cogsworth-school.git
