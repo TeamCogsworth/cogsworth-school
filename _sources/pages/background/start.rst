@@ -8,7 +8,7 @@ Install ``cogsworth``
 
 You can follow the instructions in the ``cogsworth`` documentation to install the code on your machine. If you have any issues, please don't hesitate to ask for help!
 
-.. button-link:: https://cogsworth.readthedocs.io/en/latest/installation.html
+.. button-link:: https://cogsworth.readthedocs.io/en/latest/pages/install.html
     :color: primary
     :shadow:
     :align: center
