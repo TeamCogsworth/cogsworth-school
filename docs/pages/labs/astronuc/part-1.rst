@@ -9,12 +9,25 @@ Demo
 Initialising a Population
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+First, some quick imports that we'll need for this demo:
+
+.. code-block:: python
+
+    # these are already present in the notebook you should be using :)
+    # but here just in case you're just copying code cells
+    import cogsworth
+    import gala.potential as gp
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import astropy.units as u
+    import pandas as pd
+
 The most basic population you can create looks like this:
 
 .. code-block:: python
 
     p = cogsworth.pop.Population(
-        n_binaries=100,
+        n_binaries=1000,
         use_default_BSE_settings=True
     )
 
@@ -53,6 +66,10 @@ Performing stellar evolution
 
 After this point, it's time to actually evolve the binaries. For this, we use :meth:`~cogsworth.pop.Population.perform_stellar_evolution`. This function uses :mod:`cosmic` to evolve the binaries from their birth until the present day.
 
+.. margin::
+
+    We'll talk more about how to interpret the bpp output below, if you want to understand the columns, see the :ref:`output section <output>` of the background materials.
+
 .. code-block:: python
 
     # evolve the binaries
@@ -60,9 +77,6 @@ After this point, it's time to actually evolve the binaries. For this, we use :m
 
     # take a look at the evolution of the first few binaries
     print(p.bpp.loc[:5])
-
-    # same for the supernova natal kicks (this will be zero for low-mass stars that don't explode)
-    print(p.natal_kicks.loc[:5])
 
 If you want to look at the final state of the binaries at the present day, you can use the :attr:`~cogsworth.pop.Population.final_bpp` attribute, which is the final bpp row for each binary.
 
@@ -81,6 +95,7 @@ Finally, we can couple this to the galactic dynamics by integrating the orbits o
     # integrate the orbits of the binaries through the galaxy
     p.perform_galactic_evolution()
 
+    # we can take a peek at the first 5 orbits, these are Gala objects that we'll use below
     print(p.orbits[:5])
 
 Quick recap
@@ -263,6 +278,8 @@ Your favourite binary
                     p.plot_orbit(bin_num=most_massive)
 
         .. tab-item:: Neutron star
+
+            Neutron stars are quite rare, so you might have to run a larger population to make one if your mask seems to be empty!
 
             .. dropdown:: Hint
                 :color: info
