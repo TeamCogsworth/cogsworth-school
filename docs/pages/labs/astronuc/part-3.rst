@@ -270,6 +270,17 @@ Tasks
 
 Now it's your turn to do the same for common-envelope events! The code from the demo above should be helpful for this :)
 
+.. margin::
+
+    You can also imagine that simulating the location of NS-NS mergers in the galaxy would be important for understanding the chemical enrichment from these events, since they are important sites of :math:`r`-process nucleosynthesis. The trouble is that these are so rare that simulating enough of them to get a good picture of their distribution in the galaxy would require a much larger population than we can simulate in the time we have here.
+
+Why care about the location of common-envelope events?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This lab is for a nucleosynthesis workshop, so it should be immediately obvious why we spent some time thinking about where supernovae occur in the galaxy - the chemical enrichment from these events will depend on where they occur. But common-envelope events are _also_ important for nucleosynthesis! They lead to the formation of NS-NS binaries which are important sites of :math:`r`-process nucleosynthesis and can lead to type Ia supernovae which produce nickel.
+
+So if you're interested in learning about the chemical enrichment - understanding where common-envelope events occur in the galaxy is also important!
+
 .. admonition:: Task 3.1
     :class: admonition-task
 
