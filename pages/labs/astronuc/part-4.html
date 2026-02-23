@@ -319,6 +319,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-use-population-synthesis-codes">Why do we use population synthesis codes?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-population-distributions">Initial population distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-physics-settings">Binary physics settings</a></li>
@@ -344,6 +345,10 @@ document.write(`
 <p class="admonition-title">Tip</p>
 <p>For a full list of the initial conditions and binary physics variations you could use, check out <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html">this page of the COSMIC docs</a>. Specifically, the sampling parameters are <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#sampling">found here</a> and the binary physics parameters are <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#binary-physics">here</a>.</p>
 </div>
+<section id="why-do-we-use-population-synthesis-codes">
+<h2>Why do we use population synthesis codes?<a class="headerlink" href="#why-do-we-use-population-synthesis-codes" title="Link to this heading">#</a></h2>
+<p>We’ve seen that <code class="docutils literal notranslate"><span class="pre">MESA</span></code> or more detailed codes can more accurately model the evolution of stars - but they are too computationally expensive to run for large populations of binaries. On the other hand, <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> is much faster, but it relies on a lot of assumptions and approximations to get that speed. So we need to be careful when using it to make sure that our results aren’t just a consequence of some particular assumption we made. By varying our assumptions and seeing how it changes our results, we can get a better sense of which assumptions are most important for the questions we’re trying to answer, and which ones we can be less concerned about.</p>
+</section>
 <section id="demo">
 <h2>Demo<a class="headerlink" href="#demo" title="Link to this heading">#</a></h2>
 <p>Let’s start by quickly creating a template population to use for our variations. At first, let’s just sample the binaries but not do any evolution yet. This will make it easy to use the same initial population for all of our variations, so that we can isolate the impact of changing our assumptions about the physics.</p>
@@ -624,6 +629,7 @@ Vary the galactic potential</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-use-population-synthesis-codes">Why do we use population synthesis codes?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-population-distributions">Initial population distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-physics-settings">Binary physics settings</a></li>

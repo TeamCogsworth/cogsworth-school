@@ -328,7 +328,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-the-supernovae-in-the-galaxy">Locate the supernovae in the galaxy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-care-about-the-location-of-common-envelope-events">Why care about the location of common-envelope events?</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -574,6 +577,14 @@ document.write(`
 <section id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h2>
 <p>Now it’s your turn to do the same for common-envelope events! The code from the demo above should be helpful for this :)</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>You can also imagine that simulating the location of NS-NS mergers in the galaxy would be important for understanding the chemical enrichment from these events, since they are important sites of <span class="math notranslate nohighlight">\(r\)</span>-process nucleosynthesis. The trouble is that these are so rare that simulating enough of them to get a good picture of their distribution in the galaxy would require a much larger population than we can simulate in the time we have here.</p>
+</aside>
+<section id="why-care-about-the-location-of-common-envelope-events">
+<h3>Why care about the location of common-envelope events?<a class="headerlink" href="#why-care-about-the-location-of-common-envelope-events" title="Link to this heading">#</a></h3>
+<p>This lab is for a nucleosynthesis workshop, so it should be immediately obvious why we spent some time thinking about where supernovae occur in the galaxy - the chemical enrichment from these events will depend on where they occur. But common-envelope events are _also_ important for nucleosynthesis! They lead to the formation of NS-NS binaries which are important sites of <span class="math notranslate nohighlight">\(r\)</span>-process nucleosynthesis and can lead to type Ia supernovae which produce nickel.</p>
+<p>So if you’re interested in learning about the chemical enrichment - understanding where common-envelope events occur in the galaxy is also important!</p>
 <div class="admonition-task admonition">
 <p class="admonition-title">Task 3.1</p>
 <p>Create a population like the one above (~10000 binaries, that preferentially samples higher mass binaries). Write a mask for the <code class="docutils literal notranslate"><span class="pre">bpp</span></code> table that selects only the rows corresponding to common-envelope events. It may be useful to know that common-envelope events are labelled as <code class="docutils literal notranslate"><span class="pre">evol_type</span> <span class="pre">==</span> <span class="pre">7</span></code>.</p>
@@ -751,6 +762,7 @@ document.write(`
 </details></div>
 </section>
 </section>
+</section>
 
 
                 </article>
@@ -805,7 +817,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-the-supernovae-in-the-galaxy">Locate the supernovae in the galaxy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-care-about-the-location-of-common-envelope-events">Why care about the location of common-envelope events?</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

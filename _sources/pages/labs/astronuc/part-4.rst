@@ -7,6 +7,11 @@ In this final part, we are going to do what *any* good user of population synthe
 
     For a full list of the initial conditions and binary physics variations you could use, check out `this page of the COSMIC docs <https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html>`_. Specifically, the sampling parameters are `found here <https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#sampling>`_ and the binary physics parameters are `here <https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#binary-physics>`_.
 
+Why do we use population synthesis codes?
+*****************************************
+
+We've seen that ``MESA`` or more detailed codes can more accurately model the evolution of stars - but they are too computationally expensive to run for large populations of binaries. On the other hand, ``cogsworth`` is much faster, but it relies on a lot of assumptions and approximations to get that speed. So we need to be careful when using it to make sure that our results aren't just a consequence of some particular assumption we made. By varying our assumptions and seeing how it changes our results, we can get a better sense of which assumptions are most important for the questions we're trying to answer, and which ones we can be less concerned about.
+
 Demo
 ****
 
