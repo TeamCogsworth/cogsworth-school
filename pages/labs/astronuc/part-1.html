@@ -351,9 +351,20 @@ document.write(`
 <h2>Demo<a class="headerlink" href="#demo" title="Link to this heading">#</a></h2>
 <section id="initialising-a-population">
 <h3>Initialising a Population<a class="headerlink" href="#initialising-a-population" title="Link to this heading">#</a></h3>
+<p>First, some quick imports that we’ll need for this demo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># these are already present in the notebook you should be using :)</span>
+<span class="c1"># but here just in case you&#39;re just copying code cells</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cogsworth</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gala.potential</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
 <p>The most basic population you can create looks like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">cogsworth</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span>
-    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">use_default_BSE_settings</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
@@ -387,14 +398,15 @@ document.write(`
 <section id="performing-stellar-evolution">
 <h3>Performing stellar evolution<a class="headerlink" href="#performing-stellar-evolution" title="Link to this heading">#</a></h3>
 <p>After this point, it’s time to actually evolve the binaries. For this, we use <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.perform_stellar_evolution" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">perform_stellar_evolution()</span></code></a>. This function uses <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a> to evolve the binaries from their birth until the present day.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>We’ll talk more about how to interpret the bpp output below, if you want to understand the columns, see the <a class="reference internal" href="../../background/output.html#output"><span class="std std-ref">output section</span></a> of the background materials.</p>
+</aside>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># evolve the binaries</span>
 <span class="n">p</span><span class="o">.</span><span class="n">perform_stellar_evolution</span><span class="p">()</span>
 
 <span class="c1"># take a look at the evolution of the first few binaries</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">bpp</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-
-<span class="c1"># same for the supernova natal kicks (this will be zero for low-mass stars that don&#39;t explode)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">natal_kicks</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>If you want to look at the final state of the binaries at the present day, you can use the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.final_bpp" title="(in cogsworth)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">final_bpp</span></code></a> attribute, which is the final bpp row for each binary.</p>
@@ -409,6 +421,7 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># integrate the orbits of the binaries through the galaxy</span>
 <span class="n">p</span><span class="o">.</span><span class="n">perform_galactic_evolution</span><span class="p">()</span>
 
+<span class="c1"># we can take a peek at the first 5 orbits, these are Gala objects that we&#39;ll use below</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">orbits</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -577,6 +590,7 @@ Most massive binary</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
 Neutron star</label><div class="sd-tab-content docutils">
+<p>Neutron stars are quite rare, so you might have to run a larger population to make one if your mask seems to be empty!</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
 <span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
