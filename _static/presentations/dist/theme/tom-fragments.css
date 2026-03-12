@@ -1,0 +1,7 @@
+.fragment.highlight-secondary {
+    color: unset;
+}
+
+.fragment.highlight-secondary.visible {
+    color: var(--primary-col)!important;
+}

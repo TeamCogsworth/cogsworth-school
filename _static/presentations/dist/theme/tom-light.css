@@ -22,18 +22,18 @@
    --primary-col: #51b46d;
    --secondary-col: #7fc994;
    --tertiary-col: #a2be4b;
-   --r-background-color: #222;
+   --r-background-color: #fff;
    --r-main-font: Ubuntu, sans-serif;
    --r-main-font-size: 40px;
-   --r-main-color: #eee;
+   --r-main-color: #333;
    --r-block-margin: 20px;
    --r-heading-margin: 0 0 20px 0;
    --r-heading-font: Ubuntu, sans-serif;
-   --r-heading-color: #eee;
+   --r-heading-color: #333;
    --r-heading-line-height: 1.2;
    --r-heading-letter-spacing: normal;
    --r-heading-text-transform: normal;
-   --r-heading-text-shadow: 2px 2px 2px #222;
+   --r-heading-text-shadow: 2px 2px 2px #ccc;
    --r-heading-font-weight: normal;
    --r-heading1-text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
    --r-heading1-size: 3.77em;
@@ -369,7 +369,7 @@
  }
  .reveal p {
    font-weight: 300;
-   text-shadow: 1px 1px #222;
+   text-shadow: none;
  }
  
  section.has-light-background p, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4 {
@@ -386,7 +386,6 @@
  }
  
  .reveal p code {
-   background-color: #23241f;
    display: inline-block;
    border-radius: 7px;
  }
@@ -398,10 +397,6 @@
  /*********************************************
   * Custom
   *********************************************/
-
-p{
-    color: rgb(200, 200, 200);
-}
 
 .dim{
     color: grey;

@@ -4,11 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>LEGWORK demo</title>
+		<title>cogsworth @ AstroNuc2026</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/tom.css">
+		<link id='theme' rel="stylesheet" href="../dist/theme/tom.css">
+		<link rel="stylesheet" href="../dist/theme/tom-fragments.css">
+		<link rel="stylesheet" href="../dist/theme/tom-general.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -16,18 +18,38 @@
         <link rel="stylesheet" href="../plugin/bootstrap/bootstrap-utilities.min.css">
 	</head>
 	<body>
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle-button">
+                <svg id="sun-icon" class="hide" xmlns="http://www.w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="moon-icon" xmlns="http://www.w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            </button>
+        </div>
 		<div class="reveal">
 			<div class="slides">
                 <section data-external="slides/title.html"></section>
-                <section data-external="slides/what-is-it.html"></section>
-                <!-- <section data-external="slides/installation.html"></section>
-                <section data-external="slides/capabilities.html"></section>
-                <section data-external="slides/motivation.html"></section>
-                <section data-external="slides/case_study.html"></section>
-                <section data-external="slides/demo-1.html"></section>
-                <section data-external="slides/demo-2.html"></section>
-                <section data-external="slides/demo-3.html"></section>
-                <section data-external="slides/conclusions.html"></section> -->
+                <section data-external="slides/00.html"></section>
+                <section data-external="slides/01.html"></section>
+                <section data-external="slides/02.html"></section>
+                <section data-external="slides/03.html"></section>
+                <section data-external="slides/05.html"></section>
+                <section data-external="slides/04.html"></section>
+                <section data-external="slides/06.html"></section>
+                <section data-external="slides/07.html"></section>
+                <section data-external="slides/08.html"></section>
+                <section data-external="slides/09.html"></section>
+                <section data-external="slides/10.html"></section>
 			</div>
 		</div>
 
@@ -40,6 +62,42 @@
 
 
 		<script>
+            // Function to set the theme
+            function setTheme(themeName) {
+                if (themeName === 'tom') {
+                    document.body.classList.add('dark');
+                    document.getElementById('sun-icon').classList.add('hide');
+                    document.getElementById('moon-icon').classList.remove('hide');
+                } else {
+                    document.body.classList.remove('dark');
+                    document.getElementById('sun-icon').classList.remove('hide');
+                    document.getElementById('moon-icon').classList.add('hide');
+                }
+                document.getElementById('theme').setAttribute('href', '../dist/theme/' + themeName + '.css');
+            }
+
+            // Function to toggle between dark and light themes
+            function toggleTheme() {
+                if (document.body.classList.contains('dark')) {
+                    setTheme('tom-light');
+                } else {
+                    setTheme('tom');
+                }
+            }
+
+            // Set initial theme on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    setTheme('tom');
+                } else {
+                    setTheme('tom-light');
+                }
+
+                // Add event listener to the toggle button
+                document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+            });
+
+
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
@@ -58,7 +116,8 @@
 					},
 				],
 
-                width: 1200
+                width: 1200,
+                slideNumber: 'c/t'
 			});
 		</script>
 	</body>

@@ -16,36 +16,39 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/new_font.css?v=454821b3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=f14441e9" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pages/labs/astronuc/part-1';</script>
     <link rel="icon" href="../../../_static/cog.ico"/>
@@ -55,6 +58,7 @@
     <link rel="prev" title="AstroNuc 2026" href="../astronuc-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,19 +74,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -90,7 +83,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -98,8 +90,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -115,7 +107,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -145,7 +138,7 @@
     
     
     <img src="../../../_static/cogsworth-logo.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="../../../_static/cogsworth-logo-darkmode.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="../../../_static/cogsworth-logo-darkmode.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">cogsworth school</p>
@@ -192,15 +185,11 @@
 </ul></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
@@ -226,9 +215,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -263,7 +257,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -277,25 +271,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -377,11 +363,11 @@ document.write(`
 </div>
 <p>to the <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population" title="(in cogsworth)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Population</span></code></a> constructor to ensure that the exact number of binaries you request are created.</p>
 </aside>
-<p>This creates a population of <em>at least</em> 1000 binaries. By default <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> assumes you want to evolve stars in the Milky Way and therefore uses a Milky Way-like star formation history (<a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.sfh.Wagg2022.html#cogsworth.sfh.Wagg2022" title="(in cogsworth)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wagg2022</span></code></a>) and a galactic gravitational potential fit to the Milky Way (<a class="reference external" href="https://gala.adrian.pw/en/latest/api/gala.potential.potential.MilkyWayPotential.html#gala.potential.potential.MilkyWayPotential" title="(in gala v1.11.1.dev34)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MilkyWayPotential</span></code></a>).</p>
+<p>This creates a population of <em>at least</em> 1000 binaries. By default <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> assumes you want to evolve stars in the Milky Way and therefore uses a Milky Way-like star formation history (<a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.sfh.Wagg2022.html#cogsworth.sfh.Wagg2022" title="(in cogsworth)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wagg2022</span></code></a>) and a galactic gravitational potential fit to the Milky Way (<a class="reference external" href="https://gala.adrian.pw/en/latest/api/gala.potential.potential.MilkyWayPotential.html#gala.potential.potential.MilkyWayPotential" title="(in gala v1.11.1.dev66)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MilkyWayPotential</span></code></a>).</p>
 </section>
 <section id="sampling-binaries">
 <h3>Sampling binaries<a class="headerlink" href="#sampling-binaries" title="Link to this heading">#</a></h3>
-<p>We can start to sample and evolve this population. First, we use <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.sample_initial_binaries" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sample_initial_binaries()</span></code></a> to sample the initial binaries using <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a> and draw their birth times and initial kinematics from the star formation history model.</p>
+<p>We can start to sample and evolve this population. First, we use <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.sample_initial_binaries" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sample_initial_binaries()</span></code></a> to sample the initial binaries using <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.5)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a> and draw their birth times and initial kinematics from the star formation history model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># perform initial sampling</span>
 <span class="n">p</span><span class="o">.</span><span class="n">sample_initial_binaries</span><span class="p">()</span>
 
@@ -397,7 +383,7 @@ document.write(`
 </section>
 <section id="performing-stellar-evolution">
 <h3>Performing stellar evolution<a class="headerlink" href="#performing-stellar-evolution" title="Link to this heading">#</a></h3>
-<p>After this point, it’s time to actually evolve the binaries. For this, we use <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.perform_stellar_evolution" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">perform_stellar_evolution()</span></code></a>. This function uses <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a> to evolve the binaries from their birth until the present day.</p>
+<p>After this point, it’s time to actually evolve the binaries. For this, we use <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.perform_stellar_evolution" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">perform_stellar_evolution()</span></code></a>. This function uses <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.5)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a> to evolve the binaries from their birth until the present day.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>We’ll talk more about how to interpret the bpp output below, if you want to understand the columns, see the <a class="reference internal" href="../../background/output.html#output"><span class="std std-ref">output section</span></a> of the background materials.</p>
@@ -417,7 +403,7 @@ document.write(`
 </section>
 <section id="integrating-galactic-orbits">
 <h3>Integrating galactic orbits<a class="headerlink" href="#integrating-galactic-orbits" title="Link to this heading">#</a></h3>
-<p>Finally, we can couple this to the galactic dynamics by integrating the orbits of the binaries through the galaxy using <a class="reference external" href="https://gala.adrian.pw/en/latest/index.html#module-gala" title="(in gala v1.11.1.dev34)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gala</span></code></a>. This is done with <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.perform_galactic_evolution" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">perform_galactic_evolution()</span></code></a>.</p>
+<p>Finally, we can couple this to the galactic dynamics by integrating the orbits of the binaries through the galaxy using <a class="reference external" href="https://gala.adrian.pw/en/latest/index.html#module-gala" title="(in gala v1.11.1.dev66)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gala</span></code></a>. This is done with <a class="reference external" href="https://cogsworth.readthedocs.io/en/latest/api/cogsworth.pop.Population.html#cogsworth.pop.Population.perform_galactic_evolution" title="(in cogsworth)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">perform_galactic_evolution()</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># integrate the orbits of the binaries through the galaxy</span>
 <span class="n">p</span><span class="o">.</span><span class="n">perform_galactic_evolution</span><span class="p">()</span>
 
@@ -430,10 +416,10 @@ document.write(`
 <h3>Quick recap<a class="headerlink" href="#quick-recap" title="Link to this heading">#</a></h3>
 <p>This class now stores the data for the whole simulation, everything from the initial conditions of the binaries, to their properties at each timestep of evolution. To summarise, we have just:</p>
 <ul class="simple">
-<li><p>Sampled the initial binaries from <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a></p></li>
+<li><p>Sampled the initial binaries from <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.5)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a></p></li>
 <li><p>Drawn their initial kinematics and birth times from the star formation history model</p></li>
-<li><p>Evolved the binaries from birth until present day using <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a></p></li>
-<li><p>Integrated the orbits of the binaries through the galaxy using <a class="reference external" href="https://gala.adrian.pw/en/latest/index.html#module-gala" title="(in gala v1.11.1.dev34)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gala</span></code></a></p></li>
+<li><p>Evolved the binaries from birth until present day using <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/api/cosmic.html#module-cosmic" title="(in cosmic v3.7.5)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosmic</span></code></a></p></li>
+<li><p>Integrated the orbits of the binaries through the galaxy using <a class="reference external" href="https://gala.adrian.pw/en/latest/index.html#module-gala" title="(in gala v1.11.1.dev66)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gala</span></code></a></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in future cases, you can achieve all of this with a single line of code!</span>
 <span class="n">p</span><span class="o">.</span><span class="n">create_population</span><span class="p">()</span>
@@ -679,14 +665,16 @@ Something else</label><div class="sd-tab-content docutils">
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialising-a-population">Initialising a Population</a></li>
@@ -751,8 +739,8 @@ By Tom Wagg
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
