@@ -12,6 +12,81 @@ Why do we use population synthesis codes?
 
 We've seen that ``MESA`` or more detailed codes can more accurately model the evolution of stars - but they are too computationally expensive to run for large populations of binaries. On the other hand, ``cogsworth`` is much faster, but it relies on a lot of assumptions and approximations to get that speed. So we need to be careful when using it to make sure that our results aren't just a consequence of some particular assumption we made. By varying our assumptions and seeing how it changes our results, we can get a better sense of which assumptions are most important for the questions we're trying to answer, and which ones we can be less concerned about.
 
+Collaborative variations
+************************
+
+*This is blatant copying of EB's idea for a collaborative activity, but I thought it would be fun to do something like this in the lab!*
+
+.. centered:: `Spreadsheet for your values <https://docs.google.com/spreadsheets/d/1NJTWywubCVXEzcBmTZ0a4k3pNCsnMnzW_EJYzd1qQ3E/edit?usp=sharing>`_
+
+Instead of the full lab which may be too long, inspired by EB's session on Tuesday, I thought it could be fun to do something collaborative. If you're participating live, I have hopefully handed to you a slip of paper with a particular physics setting to try. It will say something like
+
+    "alpha1" = 0.1
+
+Your task is to
+
+.. margin::
+
+    For steps 2-4, look at the code in the "Example" section below for a template of how to do this
+
+1. Find out what this parameter means and think about how it might impact binary evolution (you're going to want to look through ``COSMIC``'s `documentation <https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#binary-physics>`_ to find this out!)
+2. Create a fiducial population that uses default settings
+3. Re-run the fiducial population with the parameter on your slip of paper changed to the value I gave you
+4. Use the function below to get some basic summary statistics about the population and see what changed - does it make sense?
+5. Put your values into the shared spreadsheet linked above, check out the plots on the second sheet.
+
+Example
+-------
+
+You can use the code below as a template for your variation. Just copy and paste it into your notebook, and then change the part that says "CHANGE THIS TO YOUR SETTING(S)" to whatever setting you have on your slip of paper. You might have more than one setting, just do each on its own line.
+
+.. code-block:: python
+
+    import cogsworth
+
+    # sample a fiducial population
+    fiducial = cogsworth.pop.Population(
+        n_binaries=10_000,
+        use_default_BSE_settings=True,
+        final_kstar1=[13, 14],
+    )
+    fiducial.sample_initial_binaries()
+
+    # copy to a varied population
+    varied = fiducial.copy()
+
+    # ------------------------------------------
+    # ----- CHANGE THIS TO YOUR SETTING(S) -----
+    varied.BSE_settings["alpha1"] = 0.1
+    # ------------------------------------------
+
+    # run stellar evolution in both cases
+    fiducial.perform_stellar_evolution()
+    varied.perform_stellar_evolution()
+
+    def get_population_stats(pop):
+        sn_times = pop.bpp[pop.bpp["evol_type"].isin([15, 16])]["tphys"]
+        disruption_fraction = pop.disrupted.sum() / len(pop)
+        bh_masses = np.concatenate([pop.final_bpp[pop.final_bpp["kstar_1"].isin([14])]["mass_1"],
+                                    pop.final_bpp[pop.final_bpp["kstar_2"].isin([14])]["mass_2"]])
+        merger_fraction = (pop.final_bpp["sep"] == 0.0).sum() / len(pop)
+        ce_per_msun = (pop.bpp["evol_type"] == 7).sum() / (pop.mass_singles + pop.mass_binaries)
+        return {
+            "disruption_fraction": disruption_fraction,
+            "merger_fraction": merger_fraction,
+            "ce_per_msun": ce_per_msun,
+            "sn_per_msun": len(sn_times) / (pop.mass_singles + pop.mass_binaries),
+            "sn_times": sn_times.describe().round(3),
+            "bh_masses": pd.Series(bh_masses).describe().round(3),
+        }
+
+    for pop, label in [(fiducial, "Fiducial"), (varied, "Varied")]:
+        print(f"\n{label} Population Statistics:")
+        print("-" * 30)
+        stats = get_population_stats(pop)
+        for key, value in stats.items():
+            print(f"{key}: {np.round(value, 3) if isinstance(value, (int, float)) else value}")
+
 Demo
 ****
 

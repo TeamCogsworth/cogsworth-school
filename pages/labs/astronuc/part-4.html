@@ -206,6 +206,7 @@
 <li class="toctree-l2"><a class="reference internal" href="part-2.html">Part 2: Identifying specific objects in the population</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part-3.html">Part 3: Investigate the supernovae</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Part 4: Varying our assumptions</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -305,7 +306,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Part 4: Varying our assumptions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-use-population-synthesis-codes">Why do we use population synthesis codes?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-variations">Collaborative variations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-population-distributions">Initial population distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-physics-settings">Binary physics settings</a></li>
@@ -314,6 +320,9 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -335,6 +344,77 @@
 <h2>Why do we use population synthesis codes?<a class="headerlink" href="#why-do-we-use-population-synthesis-codes" title="Link to this heading">#</a></h2>
 <p>We’ve seen that <code class="docutils literal notranslate"><span class="pre">MESA</span></code> or more detailed codes can more accurately model the evolution of stars - but they are too computationally expensive to run for large populations of binaries. On the other hand, <code class="docutils literal notranslate"><span class="pre">cogsworth</span></code> is much faster, but it relies on a lot of assumptions and approximations to get that speed. So we need to be careful when using it to make sure that our results aren’t just a consequence of some particular assumption we made. By varying our assumptions and seeing how it changes our results, we can get a better sense of which assumptions are most important for the questions we’re trying to answer, and which ones we can be less concerned about.</p>
 </section>
+<section id="collaborative-variations">
+<h2>Collaborative variations<a class="headerlink" href="#collaborative-variations" title="Link to this heading">#</a></h2>
+<p><em>This is blatant copying of EB’s idea for a collaborative activity, but I thought it would be fun to do something like this in the lab!</em></p>
+<p class="centered">
+<strong><a class="reference external" href="https://docs.google.com/spreadsheets/d/1NJTWywubCVXEzcBmTZ0a4k3pNCsnMnzW_EJYzd1qQ3E/edit?usp=sharing">Spreadsheet for your values</a></strong></p><p>Instead of the full lab which may be too long, inspired by EB’s session on Tuesday, I thought it could be fun to do something collaborative. If you’re participating live, I have hopefully handed to you a slip of paper with a particular physics setting to try. It will say something like</p>
+<blockquote>
+<div><p>“alpha1” = 0.1</p>
+</div></blockquote>
+<p>Your task is to</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>For steps 2-4, look at the code in the “Example” section below for a template of how to do this</p>
+</aside>
+<ol class="arabic simple">
+<li><p>Find out what this parameter means and think about how it might impact binary evolution (you’re going to want to look through <code class="docutils literal notranslate"><span class="pre">COSMIC</span></code>’s <a class="reference external" href="https://cosmic-popsynth.github.io/COSMIC/pages/inifile.html#binary-physics">documentation</a> to find this out!)</p></li>
+<li><p>Create a fiducial population that uses default settings</p></li>
+<li><p>Re-run the fiducial population with the parameter on your slip of paper changed to the value I gave you</p></li>
+<li><p>Use the function below to get some basic summary statistics about the population and see what changed - does it make sense?</p></li>
+<li><p>Put your values into the shared spreadsheet linked above, check out the plots on the second sheet.</p></li>
+</ol>
+</section>
+</section>
+<section id="example">
+<h1>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h1>
+<p>You can use the code below as a template for your variation. Just copy and paste it into your notebook, and then change the part that says “CHANGE THIS TO YOUR SETTING(S)” to whatever setting you have on your slip of paper. You might have more than one setting, just do each on its own line.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cogsworth</span>
+
+<span class="c1"># sample a fiducial population</span>
+<span class="n">fiducial</span> <span class="o">=</span> <span class="n">cogsworth</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span>
+    <span class="n">n_binaries</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span>
+    <span class="n">use_default_BSE_settings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">final_kstar1</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">fiducial</span><span class="o">.</span><span class="n">sample_initial_binaries</span><span class="p">()</span>
+
+<span class="c1"># copy to a varied population</span>
+<span class="n">varied</span> <span class="o">=</span> <span class="n">fiducial</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------------------</span>
+<span class="c1"># ----- CHANGE THIS TO YOUR SETTING(S) -----</span>
+<span class="n">varied</span><span class="o">.</span><span class="n">BSE_settings</span><span class="p">[</span><span class="s2">&quot;alpha1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="c1"># ------------------------------------------</span>
+
+<span class="c1"># run stellar evolution in both cases</span>
+<span class="n">fiducial</span><span class="o">.</span><span class="n">perform_stellar_evolution</span><span class="p">()</span>
+<span class="n">varied</span><span class="o">.</span><span class="n">perform_stellar_evolution</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_population_stats</span><span class="p">(</span><span class="n">pop</span><span class="p">):</span>
+    <span class="n">sn_times</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="n">pop</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;evol_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">])][</span><span class="s2">&quot;tphys&quot;</span><span class="p">]</span>
+    <span class="n">disruption_fraction</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">disrupted</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+    <span class="n">bh_masses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">pop</span><span class="o">.</span><span class="n">final_bpp</span><span class="p">[</span><span class="n">pop</span><span class="o">.</span><span class="n">final_bpp</span><span class="p">[</span><span class="s2">&quot;kstar_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">14</span><span class="p">])][</span><span class="s2">&quot;mass_1&quot;</span><span class="p">],</span>
+                                <span class="n">pop</span><span class="o">.</span><span class="n">final_bpp</span><span class="p">[</span><span class="n">pop</span><span class="o">.</span><span class="n">final_bpp</span><span class="p">[</span><span class="s2">&quot;kstar_2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">14</span><span class="p">])][</span><span class="s2">&quot;mass_2&quot;</span><span class="p">]])</span>
+    <span class="n">merger_fraction</span> <span class="o">=</span> <span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">final_bpp</span><span class="p">[</span><span class="s2">&quot;sep&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+    <span class="n">ce_per_msun</span> <span class="o">=</span> <span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">bpp</span><span class="p">[</span><span class="s2">&quot;evol_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">mass_singles</span> <span class="o">+</span> <span class="n">pop</span><span class="o">.</span><span class="n">mass_binaries</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;disruption_fraction&quot;</span><span class="p">:</span> <span class="n">disruption_fraction</span><span class="p">,</span>
+        <span class="s2">&quot;merger_fraction&quot;</span><span class="p">:</span> <span class="n">merger_fraction</span><span class="p">,</span>
+        <span class="s2">&quot;ce_per_msun&quot;</span><span class="p">:</span> <span class="n">ce_per_msun</span><span class="p">,</span>
+        <span class="s2">&quot;sn_per_msun&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">sn_times</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">mass_singles</span> <span class="o">+</span> <span class="n">pop</span><span class="o">.</span><span class="n">mass_binaries</span><span class="p">),</span>
+        <span class="s2">&quot;sn_times&quot;</span><span class="p">:</span> <span class="n">sn_times</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+        <span class="s2">&quot;bh_masses&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">bh_masses</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+    <span class="p">}</span>
+
+<span class="k">for</span> <span class="n">pop</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">fiducial</span><span class="p">,</span> <span class="s2">&quot;Fiducial&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">varied</span><span class="p">,</span> <span class="s2">&quot;Varied&quot;</span><span class="p">)]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> Population Statistics:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">get_population_stats</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="w"> </span><span class="nb">float</span><span class="p">))</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <section id="demo">
 <h2>Demo<a class="headerlink" href="#demo" title="Link to this heading">#</a></h2>
 <p>Let’s start by quickly creating a template population to use for our variations. At first, let’s just sample the binaries but not do any evolution yet. This will make it easy to use the same initial population for all of our variations, so that we can isolate the impact of changing our assumptions about the physics.</p>
@@ -617,7 +697,12 @@ Vary the galactic potential</label><div class="sd-tab-content docutils">
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Part 4: Varying our assumptions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-use-population-synthesis-codes">Why do we use population synthesis codes?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-variations">Collaborative variations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-population-distributions">Initial population distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-physics-settings">Binary physics settings</a></li>
@@ -626,6 +711,9 @@ Vary the galactic potential</label><div class="sd-tab-content docutils">
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

@@ -190,7 +190,7 @@ Your own population
 .. admonition:: Task 1.1
     :class: admonition-task
 
-    To start, initialise a population with 1000 binaries, then sampling the binaries, evolve them, and integrate their orbits.
+    To start, initialise a population with 1000 binaries, then sample the binaries, evolve them, and integrate their orbits.
 
     What are the initial properties of the first few binaries in the population?
 
